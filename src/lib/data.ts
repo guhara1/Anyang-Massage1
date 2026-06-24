@@ -148,6 +148,63 @@ export const dongsOf = (sidoSlug: string, guSlug: string): Dong[] => {
   return [];
 };
 
+// ─────────────────────────────────────────────────────────────
+// 안양 행정동 리치 상세 (출장마사지 지역 페이지 — /gyeonggi/anyang/{gu}/{dong}/)
+// 스펙: hero·세부 생활권·가까운 역·인접 지역·FAQ 구성, 2000~2500자 본문
+// ─────────────────────────────────────────────────────────────
+export interface AnyangDongStation {
+  name: string;
+  slug: string;
+  desc: string;
+  hasPage: boolean;
+}
+export interface AnyangDongCard {
+  name: string;
+  desc: string;
+}
+export interface AnyangDongLink {
+  name: string;
+  path: string | null;
+}
+export interface AnyangDongFaq {
+  q: string;
+  a: string;
+}
+export interface AnyangDong {
+  slug: string;
+  name: string;
+  gu: string;
+  guName: string;
+  seoTitle: string;
+  metaDescription: string;
+  h1: string;
+  heroSub: string;
+  blurb: string;
+  overview: string[];
+  criteria: { h2: string; body: string };
+  subAreas: AnyangDongCard[];
+  nearbyStations: AnyangDongStation[];
+  stationNote: string;
+  adjacentIntro: string;
+  adjacent: Record<string, AnyangDongLink[]>;
+  faq: AnyangDongFaq[];
+}
+
+const anyangDongModules = import.meta.glob<{ default: AnyangDong }>(
+  "../data/anyang-dong/*.json",
+  { eager: true }
+);
+const anyangDongMap: Record<string, AnyangDong> = {};
+for (const mod of Object.values(anyangDongModules)) {
+  const d = ((mod as any).default ?? mod) as AnyangDong;
+  if (d && d.slug) anyangDongMap[d.slug] = d;
+}
+/** 리치 상세가 준비된 안양 행정동 전체 (개별 페이지 생성용) */
+export const anyangDongs = (): AnyangDong[] => Object.values(anyangDongMap);
+/** 슬러그로 리치 상세 조회 (없으면 undefined → 페이지 미생성) */
+export const getAnyangDong = (slug: string): AnyangDong | undefined =>
+  anyangDongMap[slug];
+
 export interface DetailDongEntry {
   sidoSlug: string;
   guSlug: string;
