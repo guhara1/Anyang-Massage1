@@ -15,8 +15,8 @@ export const SITE = {
   phone: "0508-202-4719",
   phoneHref: "tel:0508-202-4719",
 
-  /** 배포 도메인 (실제 도메인으로 교체) */
-  url: "https://baro-go-anyang.com",
+  /** 배포 도메인 */
+  url: "https://anyang-massage1.pages.dev",
 
   /** 대표 OG/썸네일 이미지 (선호 이미지 지정용) */
   ogImage: "/og-image.svg",

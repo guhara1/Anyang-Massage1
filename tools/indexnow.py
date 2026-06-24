@@ -1,243 +1,160 @@
 #!/usr/bin/env python3
 """
-IndexNow API client for submitting URLs to Bing and Naver search engines.
-Supports bulk URL submission and automatic updates when content changes.
+IndexNow 자동 통보 스크립트
+사이트의 모든 URL을 Bing, Naver에 즉시 인덱싱 통보합니다.
+
+사용법:
+  python3 tools/indexnow.py               # 모든 URL 통보
+  python3 tools/indexnow.py --urls        # URL 리스트만 출력
+  python3 tools/indexnow.py --dry-run     # 실행 없이 확인
 """
 
+import xml.etree.ElementTree as ET
 import requests
-import json
 import sys
-from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
-import logging
+from typing import List
+import argparse
+from datetime import datetime
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+# 설정
+SITE_URL = "https://anyang-massage1.pages.dev"
+INDEXNOW_KEY = "7a8d3c91-2f4e-4b7a-9d2e-1f3a5c8e7d2b"
+BING_INDEXNOW_URL = "https://api.indexnow.org/indexnow"
 
-
-class IndexNowClient:
-    def __init__(self, domain: str, indexnow_key: str):
-        """Initialize IndexNow client with domain and API key."""
-        self.domain = domain
-        self.indexnow_key = indexnow_key
-        self.bing_endpoint = "https://www.bing.com/indexnow"
-        self.naver_endpoint = "https://api.indexnow.org/indexnow"
-
-    def submit_urls(self, urls: List[str], key_location: Optional[str] = None) -> dict:
-        """
-        Submit URLs to IndexNow (Bing and Naver).
-
-        Args:
-            urls: List of URLs to submit
-            key_location: Optional location of the key file (e.g., https://domain.com/indexnow-key.txt)
-
-        Returns:
-            Dictionary with submission results for each endpoint
-        """
-        payload = {
-            "host": self.domain,
-            "key": self.indexnow_key,
-            "keyLocation": key_location or f"https://{self.domain}/indexnow-key.txt",
-            "urlList": urls[:10000]  # IndexNow limits to 10k per request
-        }
-
-        results = {}
-
-        # Submit to Bing
-        logger.info(f"Submitting {len(urls)} URLs to Bing IndexNow...")
-        try:
-            response = requests.post(
-                self.bing_endpoint,
-                json=payload,
-                timeout=10
-            )
-            results['bing'] = {
-                'status': response.status_code,
-                'success': response.status_code in [200, 202],
-                'message': response.text if response.text else 'Accepted'
-            }
-            logger.info(f"Bing: {response.status_code}")
-        except Exception as e:
-            logger.error(f"Bing submission failed: {e}")
-            results['bing'] = {'success': False, 'error': str(e)}
-
-        # Submit to Naver (alternative IndexNow endpoint)
-        logger.info(f"Submitting {len(urls)} URLs to Naver IndexNow...")
-        try:
-            response = requests.post(
-                self.naver_endpoint,
-                json=payload,
-                timeout=10
-            )
-            results['naver'] = {
-                'status': response.status_code,
-                'success': response.status_code in [200, 202],
-                'message': response.text if response.text else 'Accepted'
-            }
-            logger.info(f"Naver: {response.status_code}")
-        except Exception as e:
-            logger.error(f"Naver submission failed: {e}")
-            results['naver'] = {'success': False, 'error': str(e)}
-
-        return results
-
-    def batch_submit(self, urls: List[str], batch_size: int = 10000) -> List[dict]:
-        """
-        Submit large URL lists in batches.
-
-        Args:
-            urls: List of all URLs to submit
-            batch_size: URLs per batch (max 10k per IndexNow spec)
-
-        Returns:
-            List of results for each batch
-        """
-        results = []
-        total_batches = (len(urls) + batch_size - 1) // batch_size
-
-        for i in range(0, len(urls), batch_size):
-            batch = urls[i:i + batch_size]
-            batch_num = i // batch_size + 1
-            logger.info(f"Submitting batch {batch_num}/{total_batches} ({len(batch)} URLs)...")
-
-            batch_result = self.submit_urls(batch)
-            batch_result['batch'] = batch_num
-            batch_result['count'] = len(batch)
-            results.append(batch_result)
-
-        return results
-
-
-def extract_urls_from_sitemap(sitemap_url: str, domain: str) -> List[str]:
-    """Extract all URLs from sitemap."""
+def parse_sitemap(sitemap_path: str) -> List[str]:
+    """sitemap.xml에서 모든 URL 추출"""
     try:
-        response = requests.get(sitemap_url, timeout=10)
-        response.raise_for_status()
-
-        # Parse XML sitemap
-        import xml.etree.ElementTree as ET
-        root = ET.fromstring(response.content)
-
-        # Handle sitemap index (multiple sitemaps)
-        if 'sitemapindex' in root.tag:
-            urls = []
-            for sitemap in root.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
-                child_sitemap_url = sitemap.text
-                logger.info(f"Found sitemap: {child_sitemap_url}")
-                urls.extend(extract_urls_from_sitemap(child_sitemap_url, domain))
-            return urls
-
-        # Extract URLs from regular sitemap
+        tree = ET.parse(sitemap_path)
+        root = tree.getroot()
+        namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         urls = []
-        for url_elem in root.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
-            url = url_elem.text
-            if url.startswith('http'):
-                urls.append(url)
+
+        for url_elem in root.findall('ns:url', namespace):
+            loc = url_elem.find('ns:loc', namespace)
+            if loc is not None:
+                urls.append(loc.text)
 
         return urls
-
     except Exception as e:
-        logger.error(f"Failed to extract URLs from sitemap: {e}")
+        print(f"❌ 사이트맵 파싱 실패: {e}", file=sys.stderr)
         return []
 
+def notify_indexnow(urls: List[str], dry_run: bool = False) -> dict:
+    """IndexNow를 통해 모든 URL 통보"""
+    if not urls:
+        print("❌ 통보할 URL이 없습니다.", file=sys.stderr)
+        return {"success": False, "total": 0}
 
-def load_config(config_file: str = '.env.local') -> dict:
-    """Load configuration from .env file."""
-    config = {}
-    config_path = Path(config_file)
+    batch_size = 10000
+    batches = [urls[i:i + batch_size] for i in range(0, len(urls), batch_size)]
 
-    if config_path.exists():
-        with open(config_path, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    config[key.strip()] = value.strip().strip('"\'')
+    results = {
+        "success": True,
+        "total": len(urls),
+        "batches": len(batches),
+        "responses": []
+    }
 
-    return config
+    for batch_idx, batch in enumerate(batches, 1):
+        payload = {
+            "host": SITE_URL.replace("https://", "").replace("http://", ""),
+            "key": INDEXNOW_KEY,
+            "keyLocation": f"{SITE_URL}/indexnow-key.txt",
+            "urlList": batch
+        }
 
+        print(f"\n📤 배치 {batch_idx}/{len(batches)} 통보 중...")
+        print(f"   URL 개수: {len(batch)}")
+
+        if dry_run:
+            print(f"   [DRY RUN] Bing IndexNow API로 전송")
+            results["responses"].append({
+                "batch": batch_idx,
+                "status": "dry-run",
+                "urls": len(batch)
+            })
+            continue
+
+        try:
+            response = requests.post(BING_INDEXNOW_URL, json=payload, timeout=30)
+            response.raise_for_status()
+            print(f"   ✅ Bing IndexNow: {response.status_code}")
+
+            results["responses"].append({
+                "batch": batch_idx,
+                "bing_status": response.status_code,
+                "urls": len(batch)
+            })
+
+        except requests.exceptions.RequestException as e:
+            print(f"   ⚠️  Bing IndexNow 오류: {e}", file=sys.stderr)
+            results["success"] = False
+            results["responses"].append({
+                "batch": batch_idx,
+                "error": str(e),
+                "urls": len(batch)
+            })
+
+    return results
 
 def main():
-    """Main entry point for IndexNow submission."""
-    import argparse
-
-    parser = argparse.ArgumentParser(description='IndexNow URL submission tool')
-    parser.add_argument('--domain', help='Domain to submit (e.g., example.com)')
-    parser.add_argument('--key', help='IndexNow API key')
-    parser.add_argument('--sitemap', help='Sitemap URL to extract URLs from')
-    parser.add_argument('--urls', nargs='+', help='URLs to submit')
-    parser.add_argument('--batch', type=int, default=10000, help='Batch size for submissions')
-    parser.add_argument('--config', default='.env.local', help='Config file path')
+    parser = argparse.ArgumentParser(
+        description="IndexNow를 통해 사이트의 모든 URL을 Bing, Naver에 통보"
+    )
+    parser.add_argument("--urls", action="store_true", help="URL 리스트만 출력")
+    parser.add_argument("--dry-run", action="store_true", help="실행 없이 확인")
+    parser.add_argument("--sitemap", default="dist/sitemap.xml", help="사이트맵 경로")
 
     args = parser.parse_args()
 
-    # Load config
-    config = load_config(args.config)
-
-    domain = args.domain or config.get('INDEXNOW_DOMAIN', '').replace('https://', '').replace('http://', '')
-    key = args.key or config.get('INDEXNOW_KEY', '')
-
-    if not domain or not key:
-        logger.error("Domain and IndexNow key are required.")
-        logger.error("Provide via --domain/--key or set INDEXNOW_DOMAIN/INDEXNOW_KEY in .env.local")
+    sitemap_path = Path(args.sitemap)
+    if not sitemap_path.exists():
+        print(f"❌ 사이트맵을 찾을 수 없습니다: {args.sitemap}", file=sys.stderr)
+        print("💡 먼저 'npm run build'로 사이트를 빌드하세요.", file=sys.stderr)
         sys.exit(1)
 
-    client = IndexNowClient(domain, key)
-
-    # Get URLs
-    urls = []
-    if args.sitemap:
-        logger.info(f"Extracting URLs from sitemap: {args.sitemap}")
-        urls = extract_urls_from_sitemap(args.sitemap, domain)
-    elif args.urls:
-        urls = args.urls
-    else:
-        logger.error("Please provide --sitemap or --urls")
-        sys.exit(1)
+    print(f"📖 사이트맵 로드: {args.sitemap}")
+    urls = parse_sitemap(str(sitemap_path))
 
     if not urls:
-        logger.error("No URLs found to submit")
+        print("❌ 사이트맵에서 URL을 찾을 수 없습니다.", file=sys.stderr)
         sys.exit(1)
 
-    logger.info(f"Found {len(urls)} URLs to submit")
+    print(f"✅ {len(urls)}개 URL 발견")
 
-    # Submit URLs
-    results = client.batch_submit(urls, batch_size=args.batch)
+    if args.urls:
+        print("\n📋 URL 목록:")
+        for i, url in enumerate(urls, 1):
+            print(f"  {i:4d}. {url}")
+        return
 
-    # Print summary
-    logger.info("\n=== Submission Summary ===")
-    total_success = 0
-    for result in results:
-        batch_num = result.get('batch', '?')
-        count = result.get('count', 0)
-        bing_ok = result.get('bing', {}).get('success', False)
-        naver_ok = result.get('naver', {}).get('success', False)
+    print(f"\n🚀 IndexNow 통보 시작...")
+    print(f"   사이트: {SITE_URL}")
+    print(f"   IndexNow 키: {INDEXNOW_KEY}")
 
-        if bing_ok and naver_ok:
-            total_success += count
-            logger.info(f"Batch {batch_num}: ✓ {count} URLs ({bing_ok=}, {naver_ok=})")
-        else:
-            logger.warning(f"Batch {batch_num}: ✗ {count} URLs ({bing_ok=}, {naver_ok=})")
+    if args.dry_run:
+        print(f"   [DRY RUN 모드] 실제 통보하지 않습니다.")
 
-    logger.info(f"Total successful URLs: {total_success}/{len(urls)}")
+    result = notify_indexnow(urls, dry_run=args.dry_run)
 
-    # Save results
-    timestamp = datetime.now().isoformat()
-    results_file = Path('indexnow-results.json')
-    with open(results_file, 'w') as f:
-        json.dump({
-            'timestamp': timestamp,
-            'domain': domain,
-            'total_urls': len(urls),
-            'results': results
-        }, f, indent=2)
+    print(f"\n{'='*60}")
+    if result["success"]:
+        print(f"✅ 통보 완료!")
+        print(f"   총 {result['total']}개 URL")
+        print(f"   {result['batches']}개 배치")
+    else:
+        print(f"❌ 통보 실패")
+        print(f"   상세: {result.get('responses', [])}")
 
-    logger.info(f"Results saved to {results_file}")
+    print(f"{'='*60}")
+    print(f"\n⏰ 완료 시간: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
+    if args.dry_run:
+        print(f"\n💡 실제로 통보하려면 --dry-run 없이 다시 실행하세요:")
+        print(f"   python3 tools/indexnow.py")
 
-if __name__ == '__main__':
+    sys.exit(0 if result["success"] else 1)
+
+if __name__ == "__main__":
     main()
