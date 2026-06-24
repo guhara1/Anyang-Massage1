@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { sigungusBySido, getSigungu, dongsOf } from "../../../../lib/data";
+import { sigungusBySido, getSigungu, anyangDongs } from "../../../../lib/data";
 import { breadcrumbSchema } from "../../../../lib/seo";
 
 export async function getStaticPaths() {
@@ -28,7 +28,9 @@ const schema = [
   ]),
 ];
 
-const dongs = dongsOf("gyeonggi", gu!);
+const dongs = anyangDongs()
+  .filter((d) => d.gu === gu)
+  .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 ---
 
 <BaseLayout title={title} description={description} path={`/gyeonggi/anyang/gu/${gu}/`} schema={schema}>
@@ -60,7 +62,7 @@ const dongs = dongsOf("gyeonggi", gu!);
         <h2 style="margin-bottom:16px">주요 동</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
           {dongs.map((d) => (
-            <a href={`/gyeonggi/anyang/dong/${d.slug}/`} style="padding:20px;border:1px solid #e0e0e0;border-radius:8px;text-decoration:none;transition:all 0.2s">
+            <a href={`/gyeonggi/anyang/${d.gu}/${d.slug}/`} style="padding:20px;border:1px solid #e0e0e0;border-radius:8px;text-decoration:none;transition:all 0.2s">
               <div style="font-weight:bold;margin-bottom:8px">{d.name}</div>
               <p style="font-size:0.9rem;color:#666;margin:0">{d.blurb}</p>
             </a>

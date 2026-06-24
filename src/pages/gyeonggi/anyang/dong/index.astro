@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { sigungusBySido, dongsOf } from "../../../../lib/data";
+import { anyangDongs } from "../../../../lib/data";
 import { breadcrumbSchema } from "../../../../lib/seo";
 
-const title = "지역별 안내｜안양 동 지역";
-const description = "안양 출장마사지·홈타이 지역 안내. 안양시 모든 동의 생활권을 확인하세요.";
+const title = "지역별 안내｜안양 행정동 출장마사지 지역 안내";
+const description = "안양 출장마사지·홈타이 지역 안내. 만안구·동안구 모든 행정동의 생활권을 확인하세요.";
 
 const schema = [
   breadcrumbSchema([
@@ -15,14 +15,14 @@ const schema = [
   ]),
 ];
 
-const districts = sigungusBySido("anyang");
-const allDongs = districts.flatMap((d) => {
-  const dongs = dongsOf("gyeonggi", d.regionSlug);
-  return dongs.map((dong) => ({
-    ...dong,
-    district: d.regionName,
-    districtSlug: d.regionSlug,
-  }));
+// 구별로 묶기 (만안구 → 동안구 순)
+const all = anyangDongs();
+const guOrder = ["manan-gu", "dongan-gu"];
+const groups = guOrder.map((gu) => {
+  const dongs = all
+    .filter((d) => d.gu === gu)
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+  return { gu, guName: dongs[0]?.guName ?? gu, dongs };
 });
 ---
 
@@ -37,28 +37,26 @@ const allDongs = districts.flatMap((d) => {
     <div class="container">
       <div class="section__head">
         <span class="eyebrow">지역별 안내</span>
-        <h1 class="section__title">안양 모든 동 안내</h1>
+        <h1 class="section__title">안양 행정동 지역별 안내</h1>
         <p class="section__lead">
-          안양시의 모든 동을 확인하세요. 각 동의 생활권 특징과 근처 역, 상권 정보를 제공합니다.
+          안양시 만안구·동안구의 모든 행정동을 확인하세요. 각 동의 생활권 특징과 가까운 역,
+          인접 지역, 예약 전 확인사항을 안내합니다.
         </p>
       </div>
 
       {
-        districts.map((district) => (
+        groups.map((group) => (
           <div style="margin-bottom:48px">
-            <h2 style="margin-bottom:24px;font-size:1.5rem">{district.regionName}</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
-              {
-                dongsOf("gyeonggi", district.regionSlug).map((dong) => (
-                  <a
-                    href={`/gyeonggi/anyang/dong/${dong.slug}/`}
-                    style="padding:20px;border:1px solid #e0e0e0;border-radius:8px;text-decoration:none;transition:all 0.2s;cursor:pointer"
-                  >
-                    <div style="font-weight:bold;margin-bottom:8px;font-size:1.1rem">{dong.name}</div>
-                    <p style="font-size:0.9rem;color:#666;margin:0">{dong.blurb}</p>
-                  </a>
-                ))
-              }
+            <h2 style="margin-bottom:24px;font-size:1.5rem">{group.guName}</h2>
+            <div class="grid grid--3">
+              {group.dongs.map((dong) => (
+                <a class="card" href={`/gyeonggi/anyang/${dong.gu}/${dong.slug}/`}>
+                  <div class="card__title">
+                    {dong.name} <span class="arrow">→</span>
+                  </div>
+                  <p class="card__desc">{dong.blurb}</p>
+                </a>
+              ))}
             </div>
           </div>
         ))
