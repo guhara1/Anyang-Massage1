@@ -16,5 +16,8 @@ Allow: /
 
 Sitemap: https://anyang-massage1.pages.dev/sitemap.xml
 
+# RSS Feed
+# https://anyang-massage1.pages.dev/rss.xml
+
 # IndexNow key: 7a8d3c91-2f4e-4b7a-9d2e-1f3a5c8e7d2b
 # https://anyang-massage1.pages.dev/indexnow-key.txt
