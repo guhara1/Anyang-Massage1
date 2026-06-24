@@ -17,34 +17,91 @@
     "body": "비산동은 대단지가 넓은 면적에 퍼져 있어, 같은 동 안에서도 어느 단지인지에 따라 도착 동선과 소요 시간이 크게 달라집니다. 종합운동장 쪽인지, 학의천에 가까운 단지인지, 관양동·평촌동 경계에 가까운 단지인지에 따라 진입 경로가 다르므로, 예약 전에는 정확한 단지명과 동·호수, 그리고 정문·후문 가운데 어느 쪽으로 들어오는지를 함께 정리해 두는 것이 좋습니다. 방문 차량이 공동현관과 단지 내 어디에 정차하면 되는지도 미리 확인해 두면 넓은 단지에서도 도착이 한결 수월합니다."
   },
   "subAreas": [
-    { "name": "비산동 대단지권", "desc": "여러 아파트 대단지가 넓은 면적에 걸쳐 분포한 비산동의 대표 주거 생활권으로, 단지마다 위치 차가 큽니다." },
-    { "name": "안양종합운동장 인접권", "desc": "운동장·체육시설을 낀 위치 기준 지점으로, 어느 단지 방향에서 진입하는지 확인이 필요합니다." },
-    { "name": "학의천 인접권", "desc": "하천 산책로를 따라 이어지는 녹지형 주거 인접 생활권으로, 단지 출입구 방향 확인이 도움이 됩니다." },
-    { "name": "비산동 학교권", "desc": "학교와 주거지가 맞닿아 있어 같은 권역 안에서도 단지별 위치 차가 큰 생활권입니다." },
-    { "name": "관양동 인접권", "desc": "비산동과 경계를 맞대 함께 확인하기 좋은 동안구 인접 생활권입니다." },
-    { "name": "평촌동 인접권", "desc": "평촌역·범계역 방향 이동 기준을 함께 확인하기 좋은 동안구 중심 인접 생활권입니다." },
-    { "name": "안양동 인접권", "desc": "만안구 안양동·명학역 방향 이동을 잇는 서쪽 경계 보조 생활권입니다." }
+    {
+      "name": "비산동 대단지권",
+      "desc": "여러 아파트 대단지가 넓은 면적에 걸쳐 분포한 비산동의 대표 주거 생활권으로, 단지마다 위치 차가 큽니다."
+    },
+    {
+      "name": "안양종합운동장 인접권",
+      "desc": "운동장·체육시설을 낀 위치 기준 지점으로, 어느 단지 방향에서 진입하는지 확인이 필요합니다."
+    },
+    {
+      "name": "학의천 인접권",
+      "desc": "하천 산책로를 따라 이어지는 녹지형 주거 인접 생활권으로, 단지 출입구 방향 확인이 도움이 됩니다."
+    },
+    {
+      "name": "비산동 학교권",
+      "desc": "학교와 주거지가 맞닿아 있어 같은 권역 안에서도 단지별 위치 차가 큰 생활권입니다."
+    },
+    {
+      "name": "관양동 인접권",
+      "desc": "비산동과 경계를 맞대 함께 확인하기 좋은 동안구 인접 생활권입니다."
+    },
+    {
+      "name": "평촌동 인접권",
+      "desc": "평촌역·범계역 방향 이동 기준을 함께 확인하기 좋은 동안구 중심 인접 생활권입니다."
+    },
+    {
+      "name": "안양동 인접권",
+      "desc": "만안구 안양동·명학역 방향 이동을 잇는 서쪽 경계 보조 생활권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌·비산동·동안구 중심 인접 이동권", "hasPage": true },
-    { "name": "범계역", "slug": "beomgye-station", "desc": "범계·평촌·비산동 방향 이동 기준", "hasPage": true },
-    { "name": "명학역", "slug": "myeonghak-station", "desc": "안양동·비산동·만안 경계 방향 이동 기준", "hasPage": false }
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌·비산동·동안구 중심 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "범계역",
+      "slug": "beomgye-station",
+      "desc": "범계·평촌·비산동 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "명학역",
+      "slug": "myeonghak-station",
+      "desc": "안양동·비산동·만안 경계 방향 이동 기준",
+      "hasPage": true
+    }
   ],
   "stationNote": "비산동은 단지가 넓게 퍼져 있어 동 안에 역이 직접 들어와 있다기보다 평촌역·범계역을 낀 인접 이동권입니다. 명학역 방향은 안양동 경계 이동 기준 정도로만 참고하세요.",
   "adjacentIntro": "비산동은 동안구 안에서 관양동, 평촌동과 가까운 서부 대단지 생활권입니다. 명학역 방향 이동이 필요한 경우 안양동 생활권과 함께 확인하시면 위치를 정리하기 좋습니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "관양동", "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "관양동",
+        "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "의왕 인접 생활권", "path": null }
+      {
+        "name": "의왕 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

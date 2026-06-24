@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PriceTable from "../../../../components/PriceTable.astro";
 import { SITE } from "../../../../lib/site";
 import { anyangDongs, getAnyangDong } from "../../../../lib/data";
 import {
   breadcrumbSchema,
   webPageSchema,
   faqSchema,
-  serviceAreaSchema,
+  coursePriceSchema,
 } from "../../../../lib/seo";
 
 export async function getStaticPaths() {
@@ -46,7 +47,7 @@ const schema = [
   ]),
   webPageSchema(title, description, path),
   faqSchema(data.faq),
-  serviceAreaSchema(`안양 ${data.name}`, path),
+  coursePriceSchema(`안양 ${data.name}`, path),
 ];
 ---
 
@@ -164,6 +165,9 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- 코스 요금 -->
+  <PriceTable areaLabel={data.name} />
 
   <!-- Section 5. 예약 전 확인사항 -->
   <section class="section section--soft" id="reservation">

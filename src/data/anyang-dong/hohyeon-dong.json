@@ -17,35 +17,95 @@
     "body": "호현동은 박달동과 바로 붙어 있어 혼동하기 쉽지만, 도착 동선을 정확히 잡으려면 박달동과 호현동을 따로 구분해 두는 것이 먼저입니다. 같은 동 안에서도 박달로에 가까운 쪽인지, 안양천에 붙은 주택가인지, 광명 경계 방면인지에 따라 차량 진입 경로와 소요 시간이 달라지므로, 예약 전에는 정확한 도로명 주소와 건물 위치를 확인해 두는 것이 좋습니다. 안양역·석수역·관악역은 호현동 안에 있는 역이 아니라 인접 이동 기준이 되는 역이며, 서쪽 광명 경계로 넘어가는 경우에는 추가 이동 거리와 이동비 발생 여부까지 함께 점검해 두면 도착이 한결 수월합니다."
   },
   "subAreas": [
-    { "name": "호현동 중심", "desc": "박달동과 별개로 다루는 호현동의 대표 주택가 생활권입니다." },
-    { "name": "박달동 인접권", "desc": "호현동과 경계를 맞댄 인접 생활권으로 별도 지역으로 다룹니다." },
-    { "name": "안양천 인접권", "desc": "박달로와 안양천을 따라 이어지는 보조 이동 생활권입니다." },
-    { "name": "석수동 인접권", "desc": "석수역·관악역 방향 이동 기준을 함께 확인하는 생활권입니다." },
-    { "name": "안양동 방면", "desc": "안양역 이용이 필요할 때 함께 확인하는 만안구 중심권입니다." },
-    { "name": "광명 인접 이동권", "desc": "서쪽 광명 경계 방면으로, 추가 이동 거리와 이동비 확인이 필요한 외곽 이동권입니다." }
+    {
+      "name": "호현동 중심",
+      "desc": "박달동과 별개로 다루는 호현동의 대표 주택가 생활권입니다."
+    },
+    {
+      "name": "박달동 인접권",
+      "desc": "호현동과 경계를 맞댄 인접 생활권으로 별도 지역으로 다룹니다."
+    },
+    {
+      "name": "안양천 인접권",
+      "desc": "박달로와 안양천을 따라 이어지는 보조 이동 생활권입니다."
+    },
+    {
+      "name": "석수동 인접권",
+      "desc": "석수역·관악역 방향 이동 기준을 함께 확인하는 생활권입니다."
+    },
+    {
+      "name": "안양동 방면",
+      "desc": "안양역 이용이 필요할 때 함께 확인하는 만안구 중심권입니다."
+    },
+    {
+      "name": "광명 인접 이동권",
+      "desc": "서쪽 광명 경계 방면으로, 추가 이동 거리와 이동비 확인이 필요한 외곽 이동권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "안양역", "slug": "anyang-station", "desc": "안양동·안양일번가·호현동 인접 이동권", "hasPage": true },
-    { "name": "석수역", "slug": "seoksu-station", "desc": "석수동·호현동·서울 금천 인접권", "hasPage": false },
-    { "name": "관악역", "slug": "gwanak-station", "desc": "석수동·안양예술공원·호현동 인접권", "hasPage": false }
+    {
+      "name": "안양역",
+      "slug": "anyang-station",
+      "desc": "안양동·안양일번가·호현동 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "석수역",
+      "slug": "seoksu-station",
+      "desc": "석수동·호현동·서울 금천 인접권",
+      "hasPage": true
+    },
+    {
+      "name": "관악역",
+      "slug": "gwanak-station",
+      "desc": "석수동·안양예술공원·호현동 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "호현동 안에 지하철역이 직접 있는 것은 아니며, 위 역들은 모두 차량 이동 기준의 인접 역입니다. 서쪽 광명 경계 방향은 별도 도시 이동권 정도로만 참고하세요.",
   "adjacentIntro": "호현동은 만안구 안에서 박달동, 석수동과 가까운 서쪽 인접 생활권입니다. 안양역 이용이 필요한 경우 안양동 생활권과 함께 확인하고, 서쪽 광명 방향 이동은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "박달동", "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/" },
-      { "name": "석수동", "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" },
-      { "name": "충훈동", "path": "/gyeonggi/anyang/manan-gu/chunghun-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "박달동",
+        "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/"
+      },
+      {
+        "name": "석수동",
+        "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      },
+      {
+        "name": "충훈동",
+        "path": "/gyeonggi/anyang/manan-gu/chunghun-dong/"
+      }
     ],
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "광명 인접 생활권", "path": null }
+      {
+        "name": "광명 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

@@ -17,34 +17,91 @@
     "body": "관양동은 같은 동 안에서도 인덕원역 상권 쪽인지, 관양시장 인근 주거지인지, 안쪽 다세대 주택가인지에 따라 도착 동선과 소요 시간이 크게 달라집니다. 인덕원역은 출구가 여러 방향으로 흩어져 있어 같은 역세권이라도 단지 방면에 따라 진입 경로가 달라지므로, 예약 전에는 정확한 도로명 주소와 함께 인덕원역 몇 번 출구·어느 단지 방향인지를 정리해 두는 것이 좋습니다. 또 인덕원역 일대는 평촌·과천 길목이라 출퇴근 시간대 혼잡이 심한 편이므로, 도착 예상 시간은 평상시와 혼잡 시간대를 나눠 확인해 두면 일정 차질을 줄일 수 있습니다."
   },
   "subAreas": [
-    { "name": "인덕원역 상권", "desc": "유동 인구가 많은 관양동의 대표 역세권 생활·상권 구역입니다." },
-    { "name": "관양시장 인접권", "desc": "생활형 상권과 주변 주거지가 맞닿은 일상 인접 생활권입니다." },
-    { "name": "다세대 주택가", "desc": "역 안쪽 좁은 골목과 다세대 주택이 모인 조용한 주거 구역입니다." },
-    { "name": "안양농수산물 일대", "desc": "차량 이동 기준과 주변 동선 확인이 필요한 위치 기준 지점입니다." },
-    { "name": "평촌동 인접권", "desc": "평촌역·평촌 신도시 방향 이동 기준을 함께 확인하는 생활권입니다." },
-    { "name": "비산동 인접권", "desc": "관양동과 가까운 동안구 인접 생활권으로 별도 지역으로 다룹니다." },
-    { "name": "과천 인접 이동권", "desc": "정부과천청사역·갈현동 방향을 잇는 외곽 이동 기준 구역입니다." }
+    {
+      "name": "인덕원역 상권",
+      "desc": "유동 인구가 많은 관양동의 대표 역세권 생활·상권 구역입니다."
+    },
+    {
+      "name": "관양시장 인접권",
+      "desc": "생활형 상권과 주변 주거지가 맞닿은 일상 인접 생활권입니다."
+    },
+    {
+      "name": "다세대 주택가",
+      "desc": "역 안쪽 좁은 골목과 다세대 주택이 모인 조용한 주거 구역입니다."
+    },
+    {
+      "name": "안양농수산물 일대",
+      "desc": "차량 이동 기준과 주변 동선 확인이 필요한 위치 기준 지점입니다."
+    },
+    {
+      "name": "평촌동 인접권",
+      "desc": "평촌역·평촌 신도시 방향 이동 기준을 함께 확인하는 생활권입니다."
+    },
+    {
+      "name": "비산동 인접권",
+      "desc": "관양동과 가까운 동안구 인접 생활권으로 별도 지역으로 다룹니다."
+    },
+    {
+      "name": "과천 인접 이동권",
+      "desc": "정부과천청사역·갈현동 방향을 잇는 외곽 이동 기준 구역입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "인덕원역", "slug": "indeogwon-station", "desc": "관양동·평촌·과천 방향 길목 이동권", "hasPage": false },
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌동·관양동·범계 방향 이동 기준", "hasPage": true },
-    { "name": "정부과천청사역", "slug": "government-complex-gwacheon-station", "desc": "관양동·과천 갈현동 인접 이동권", "hasPage": false }
+    {
+      "name": "인덕원역",
+      "slug": "indeogwon-station",
+      "desc": "관양동·평촌·과천 방향 길목 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌동·관양동·범계 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "정부과천청사역",
+      "slug": "government-complex-gwacheon-station",
+      "desc": "관양동·과천 갈현동 인접 이동권",
+      "hasPage": false
+    }
   ],
   "stationNote": "관양동 생활의 중심은 인덕원역이며, 평촌역·정부과천청사역은 인접 이동 기준의 역입니다. 인덕원역은 향후 환승 거점으로 정비 중이라 출구·단지 방면을 함께 확인해 두시는 것이 좋습니다.",
   "adjacentIntro": "관양동은 동안구 북부에서 평촌동, 비산동과 가까운 생활권이며, 인덕원역을 통해 과천 갈현동 방향과도 이어지는 길목입니다. 과천 방면 이동은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" },
-      { "name": "비산동", "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      },
+      {
+        "name": "비산동",
+        "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "과천 갈현동 인접 생활권", "path": null }
+      {
+        "name": "과천 갈현동 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

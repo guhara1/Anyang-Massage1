@@ -17,36 +17,99 @@
     "body": "안양동은 같은 동 안에서도 안양역 광장 쪽인지, 안양1번가 번화가 안쪽인지, 중앙시장 인근 주거지인지에 따라 도착 동선과 소요 시간이 크게 달라집니다. 구도심 번화가라 유동인구가 많고 야간 혼잡과 주차난이 잦으므로, 예약 전에는 정확한 도로명 주소와 건물 위치, 차량 진입 가능 여부와 인근 주차 사정을 함께 확인해 두는 것이 좋습니다. 안양역은 동 안에 있지만 명학역·관악역은 인접 이동 기준 역이므로, 가까운 역만 출발지로 설명하기보다 안양1번가·안양역 광장·중앙시장 같은 지점과 거주 단지명을 기준으로 위치를 안내하면 혼잡한 번화가에서도 도착이 한결 수월합니다."
   },
   "subAreas": [
-    { "name": "안양1번가", "desc": "상가와 먹자골목이 밀집해 밤까지 사람이 몰리는 안양동의 대표 번화가 생활권입니다." },
-    { "name": "안양역 광장", "desc": "유동인구가 많아 차량 진입 동선과 주차 사정을 미리 확인해 두면 좋은 위치 기준 지점입니다." },
-    { "name": "안양중앙시장 인접권", "desc": "수십 년 된 전통 상권과 주변 주거지가 맞닿은 구도심 인접 생활권입니다." },
-    { "name": "만안구청 방면", "desc": "행정·생활 기반이 모여 비교적 동선이 정돈된 안양동의 보조 생활권입니다." },
-    { "name": "명학역 방면", "desc": "안양동 남쪽에서 호계 방향으로 이어지는 이동 기준을 함께 확인하는 생활권입니다." },
-    { "name": "석수·박달 인접권", "desc": "안양역을 축으로 만안구 서쪽으로 이어지는 차량 이동 중심 인접 생활권입니다." },
-    { "name": "비산동 인접권", "desc": "안양천을 건너 동안구 방향과 가까운, 별도 지역으로 다루는 인접 생활권입니다." }
+    {
+      "name": "안양1번가",
+      "desc": "상가와 먹자골목이 밀집해 밤까지 사람이 몰리는 안양동의 대표 번화가 생활권입니다."
+    },
+    {
+      "name": "안양역 광장",
+      "desc": "유동인구가 많아 차량 진입 동선과 주차 사정을 미리 확인해 두면 좋은 위치 기준 지점입니다."
+    },
+    {
+      "name": "안양중앙시장 인접권",
+      "desc": "수십 년 된 전통 상권과 주변 주거지가 맞닿은 구도심 인접 생활권입니다."
+    },
+    {
+      "name": "만안구청 방면",
+      "desc": "행정·생활 기반이 모여 비교적 동선이 정돈된 안양동의 보조 생활권입니다."
+    },
+    {
+      "name": "명학역 방면",
+      "desc": "안양동 남쪽에서 호계 방향으로 이어지는 이동 기준을 함께 확인하는 생활권입니다."
+    },
+    {
+      "name": "석수·박달 인접권",
+      "desc": "안양역을 축으로 만안구 서쪽으로 이어지는 차량 이동 중심 인접 생활권입니다."
+    },
+    {
+      "name": "비산동 인접권",
+      "desc": "안양천을 건너 동안구 방향과 가까운, 별도 지역으로 다루는 인접 생활권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "안양역", "slug": "anyang-station", "desc": "안양동·안양1번가·안양중앙시장 중심 생활권", "hasPage": true },
-    { "name": "명학역", "slug": "myeonghak-station", "desc": "안양동·만안구청·호계 방향 이동 기준", "hasPage": false },
-    { "name": "관악역", "slug": "gwanak-station", "desc": "안양동·석수동·안양예술공원 인접권", "hasPage": false }
+    {
+      "name": "안양역",
+      "slug": "anyang-station",
+      "desc": "안양동·안양1번가·안양중앙시장 중심 생활권",
+      "hasPage": true
+    },
+    {
+      "name": "명학역",
+      "slug": "myeonghak-station",
+      "desc": "안양동·만안구청·호계 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "관악역",
+      "slug": "gwanak-station",
+      "desc": "안양동·석수동·안양예술공원 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "안양역은 안양동 생활권 안에 직접 자리한 중심 역이며, 명학역·관악역은 차량·도보로 이어지는 인접 이동 기준 역입니다. 금정역·평촌역 방향은 동안구 인접 이동권 정도로만 참고하세요.",
   "adjacentIntro": "안양동은 만안구 한가운데 자리해 석수동, 박달동, 충훈동과 가까운 중심 생활권이며, 안양천 건너 비산동 등 동안구 방향과도 짧은 동선으로 이어집니다. 안양역·안양1번가를 기준으로 인접 동을 함께 확인하시면 위치를 잡기 수월하고, 서울 금천 방면은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "석수동", "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/" },
-      { "name": "박달동", "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/" },
-      { "name": "충훈동", "path": "/gyeonggi/anyang/manan-gu/chunghun-dong/" },
-      { "name": "호현동", "path": "/gyeonggi/anyang/manan-gu/hohyeon-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "석수동",
+        "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/"
+      },
+      {
+        "name": "박달동",
+        "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/"
+      },
+      {
+        "name": "충훈동",
+        "path": "/gyeonggi/anyang/manan-gu/chunghun-dong/"
+      },
+      {
+        "name": "호현동",
+        "path": "/gyeonggi/anyang/manan-gu/hohyeon-dong/"
+      }
     ],
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "비산동", "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "비산동",
+        "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "서울 금천 인접 생활권", "path": null }
+      {
+        "name": "서울 금천 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

@@ -17,33 +17,87 @@
     "body": "범계동은 같은 동이라도 범계역 광장과 로데오거리 한복판인지, 뉴코아 뒤편 상가인지, 평촌·호계 방면 주거 단지인지에 따라 도착 동선과 소요 시간이 크게 달라집니다. 번화가 특성상 범계역 몇 번 출구로 나와 어느 단지 방면인지까지 함께 잡아 두면 위치를 헷갈리지 않습니다. 또 주말 저녁에는 로데오거리 일대가 크게 붐비고 주차 공간도 빠듯한 편이라, 예약 전에는 정확한 도로명 주소와 건물 위치, 그리고 혼잡 시간대 도착 지연 가능성을 함께 확인해 두는 것이 좋습니다. 범계역·평촌역은 범계동을 이해하는 큰 기준점이지만, 실제 위치는 거주 단지명과 로데오거리·범계역 광장 같은 지점을 기준으로 안내하면 도착이 한결 수월합니다."
   },
   "subAreas": [
-    { "name": "범계역 로데오거리", "desc": "음식점·카페·쇼핑이 밀집한 범계동의 대표 번화가 생활권입니다." },
-    { "name": "범계역 광장", "desc": "출구·단지 방면 확인이 필요한 위치 기준 중심 지점입니다." },
-    { "name": "뉴코아 일대", "desc": "뉴코아아울렛 평촌점을 낀 상권과 주변 주거지가 맞닿은 생활권입니다." },
-    { "name": "평촌동 인접권", "desc": "범계동과 함께 확인하기 좋은 평촌 신도시 인접 생활권입니다." },
-    { "name": "호계동 인접권", "desc": "범계동과 가까운 인접 생활권으로 별도 지역으로 다룹니다." },
-    { "name": "관양동 인접권", "desc": "인덕원역 방향 이동 기준을 함께 확인하는 인접 생활권입니다." }
+    {
+      "name": "범계역 로데오거리",
+      "desc": "음식점·카페·쇼핑이 밀집한 범계동의 대표 번화가 생활권입니다."
+    },
+    {
+      "name": "범계역 광장",
+      "desc": "출구·단지 방면 확인이 필요한 위치 기준 중심 지점입니다."
+    },
+    {
+      "name": "뉴코아 일대",
+      "desc": "뉴코아아울렛 평촌점을 낀 상권과 주변 주거지가 맞닿은 생활권입니다."
+    },
+    {
+      "name": "평촌동 인접권",
+      "desc": "범계동과 함께 확인하기 좋은 평촌 신도시 인접 생활권입니다."
+    },
+    {
+      "name": "호계동 인접권",
+      "desc": "범계동과 가까운 인접 생활권으로 별도 지역으로 다룹니다."
+    },
+    {
+      "name": "관양동 인접권",
+      "desc": "인덕원역 방향 이동 기준을 함께 확인하는 인접 생활권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "범계역", "slug": "beomgye-station", "desc": "범계동·로데오거리·평촌 신도시 중심 이동권", "hasPage": true },
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌동·범계동·평촌 신도시 방향 이동 기준", "hasPage": true },
-    { "name": "인덕원역", "slug": "indeogwon-station", "desc": "관양동·범계동·과천 방향 인접 이동권", "hasPage": false }
+    {
+      "name": "범계역",
+      "slug": "beomgye-station",
+      "desc": "범계동·로데오거리·평촌 신도시 중심 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌동·범계동·평촌 신도시 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "인덕원역",
+      "slug": "indeogwon-station",
+      "desc": "관양동·범계동·과천 방향 인접 이동권",
+      "hasPage": true
+    }
   ],
   "stationNote": "범계동은 4호선 범계역을 직접 낀 역세권이며, 평촌역도 같은 평촌 신도시 생활권으로 함께 이용할 수 있습니다. 인덕원역 방향은 관양동·과천 인접 이동권 정도로 참고하세요.",
   "adjacentIntro": "범계동은 동안구 안에서 평촌동, 호계동, 관양동과 가까운 평촌 신도시 중심 생활권입니다. 범계역·평촌역 이용이 편리하고, 만안구 방향이나 과천·의왕 방향 이동은 별도 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" },
-      { "name": "호계동", "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/" },
-      { "name": "관양동", "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      },
+      {
+        "name": "호계동",
+        "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/"
+      },
+      {
+        "name": "관양동",
+        "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "과천·의왕 인접 생활권", "path": null }
+      {
+        "name": "과천·의왕 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

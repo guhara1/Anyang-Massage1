@@ -17,34 +17,91 @@
     "body": "갈산동은 같은 동 안에서도 동안구청·관공서 방면인지, 평촌중앙공원에 가까운 쪽인지, 신도시 아파트 단지 안쪽인지에 따라 도착 동선과 소요 시간이 달라집니다. 평촌역·범계역은 갈산동 안에 있는 역이라기보다 인접 이동 기준이 되는 역이므로, 가까운 역을 출발지로 설명하기보다 동안구청·평촌중앙공원 같은 랜드마크와 거주 단지명을 기준으로 위치를 안내하면 도착이 한결 수월합니다. 특히 평일 낮 관공서 주변은 주차와 진입 동선이 혼잡할 수 있으니, 예약 전에는 정확한 도로명 주소와 건물 위치, 단지 방문 차량의 진입·주차 가능 여부를 함께 확인해 두는 것이 좋습니다."
   },
   "subAreas": [
-    { "name": "동안구청 일대", "desc": "구청과 관공서가 모인 갈산동의 행정 중심 기준 지점입니다." },
-    { "name": "평촌중앙공원 인접권", "desc": "녹지와 보행 동선이 잘 갖춰진 위치 기준 생활권입니다." },
-    { "name": "갈산동 단지권", "desc": "신도시 아파트 단지가 이어지는 대표 주거 생활권입니다." },
-    { "name": "부림동 인접권", "desc": "갈산동과 함께 확인하기 좋은 평촌 중앙부 인접 생활권입니다." },
-    { "name": "관양동 인접권", "desc": "인덕원 방향 이동 기준을 함께 확인하는 인접 생활권입니다." },
-    { "name": "평촌동 인접권", "desc": "평촌역·학원가 방향 이동을 잇는 인접 생활권입니다." }
+    {
+      "name": "동안구청 일대",
+      "desc": "구청과 관공서가 모인 갈산동의 행정 중심 기준 지점입니다."
+    },
+    {
+      "name": "평촌중앙공원 인접권",
+      "desc": "녹지와 보행 동선이 잘 갖춰진 위치 기준 생활권입니다."
+    },
+    {
+      "name": "갈산동 단지권",
+      "desc": "신도시 아파트 단지가 이어지는 대표 주거 생활권입니다."
+    },
+    {
+      "name": "부림동 인접권",
+      "desc": "갈산동과 함께 확인하기 좋은 평촌 중앙부 인접 생활권입니다."
+    },
+    {
+      "name": "관양동 인접권",
+      "desc": "인덕원 방향 이동 기준을 함께 확인하는 인접 생활권입니다."
+    },
+    {
+      "name": "평촌동 인접권",
+      "desc": "평촌역·학원가 방향 이동을 잇는 인접 생활권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌동·갈산동·학원가 인접 이동권", "hasPage": true },
-    { "name": "범계역", "slug": "beomgye-station", "desc": "범계동·갈산동·평촌 중심 상권 이동 기준", "hasPage": true },
-    { "name": "인덕원역", "slug": "indeogwon-station", "desc": "관양동·갈산동·과천 방향 인접권", "hasPage": false }
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌동·갈산동·학원가 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "범계역",
+      "slug": "beomgye-station",
+      "desc": "범계동·갈산동·평촌 중심 상권 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "인덕원역",
+      "slug": "indeogwon-station",
+      "desc": "관양동·갈산동·과천 방향 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "갈산동 안에 지하철역이 직접 있는 것은 아니며, 위 역들은 평촌 중심권을 잇는 인접 역입니다. 인덕원역·과천 방향은 인접 이동권 정도로만 참고하세요.",
   "adjacentIntro": "갈산동은 동안구 안에서 부림동, 관양동, 평촌동과 가까운 평촌 중앙부 생활권입니다. 평촌역·범계역 이용이 필요한 경우 평촌 중심권과 함께 확인하고, 만안구 방향 이동은 별도 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "관양동", "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/" },
-      { "name": "부림동", "path": "/gyeonggi/anyang/dongan-gu/burim-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "관양동",
+        "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/"
+      },
+      {
+        "name": "부림동",
+        "path": "/gyeonggi/anyang/dongan-gu/burim-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "인덕원·과천 인접 생활권", "path": null }
+      {
+        "name": "인덕원·과천 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

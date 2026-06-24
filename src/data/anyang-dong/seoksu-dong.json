@@ -17,36 +17,99 @@
     "body": "석수동은 산자락 경사지에 주택가가 형성돼 있어 같은 동 안에서도 석수역 상권 쪽인지, 관악산 자락 위쪽 주택가인지, 안양예술공원 방면인지에 따라 도착 동선과 소요 시간이 달라집니다. 경사진 골목과 계단길, 갈라지는 산자락 길이 많아 주소만으로는 건물을 찾기 어려운 경우가 많으므로, 예약 전에는 석수역·큰길을 기준으로 한 위치 설명과 정확한 도로명 주소, 건물·동·호수를 함께 정리해 두는 것이 좋습니다. 또한 산 위쪽이나 서울 금천 경계 방향처럼 진입이 까다로운 위치는 추가 이동비가 발생할 수 있으니, 거주 단지명과 큰길·역 기준 지점을 함께 안내하면 도착이 수월합니다."
   },
   "subAreas": [
-    { "name": "석수역 상권", "desc": "1호선 석수역과 역 주변 생활 상권이 모인 석수동의 대표 생활권입니다." },
-    { "name": "관악산 자락 주택가", "desc": "산비탈을 따라 경사 골목과 계단길이 이어지는 주거 생활권입니다." },
-    { "name": "안양예술공원 방면", "desc": "삼막사 입구와 등산로·산책로로 이어지는 한적한 인접권입니다." },
-    { "name": "삼성산 자락 인접권", "desc": "삼막사 방향 산자락 진입 동선을 함께 확인하는 생활권입니다." },
-    { "name": "박달·호현 인접권", "desc": "석수동과 함께 확인하기 좋은 만안구 서쪽 인접 생활권입니다." },
-    { "name": "안양동 방면 이동권", "desc": "안양역·만안구 중심권으로 이어지는 보조 이동 생활권입니다." },
-    { "name": "서울 금천 인접 이동권", "desc": "금천구 경계와 맞닿은 북쪽 끝 이동 기준 생활권입니다." }
+    {
+      "name": "석수역 상권",
+      "desc": "1호선 석수역과 역 주변 생활 상권이 모인 석수동의 대표 생활권입니다."
+    },
+    {
+      "name": "관악산 자락 주택가",
+      "desc": "산비탈을 따라 경사 골목과 계단길이 이어지는 주거 생활권입니다."
+    },
+    {
+      "name": "안양예술공원 방면",
+      "desc": "삼막사 입구와 등산로·산책로로 이어지는 한적한 인접권입니다."
+    },
+    {
+      "name": "삼성산 자락 인접권",
+      "desc": "삼막사 방향 산자락 진입 동선을 함께 확인하는 생활권입니다."
+    },
+    {
+      "name": "박달·호현 인접권",
+      "desc": "석수동과 함께 확인하기 좋은 만안구 서쪽 인접 생활권입니다."
+    },
+    {
+      "name": "안양동 방면 이동권",
+      "desc": "안양역·만안구 중심권으로 이어지는 보조 이동 생활권입니다."
+    },
+    {
+      "name": "서울 금천 인접 이동권",
+      "desc": "금천구 경계와 맞닿은 북쪽 끝 이동 기준 생활권입니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "석수역", "slug": "seoksu-station", "desc": "석수동·관악산 자락·서울 금천 인접권", "hasPage": false },
-    { "name": "관악역", "slug": "gwanak-station", "desc": "석수동·안양예술공원·삼막사 방향 인접권", "hasPage": false },
-    { "name": "안양역", "slug": "anyang-station", "desc": "안양동·안양일번가·석수동 인접 이동권", "hasPage": true }
+    {
+      "name": "석수역",
+      "slug": "seoksu-station",
+      "desc": "석수동·관악산 자락·서울 금천 인접권",
+      "hasPage": true
+    },
+    {
+      "name": "관악역",
+      "slug": "gwanak-station",
+      "desc": "석수동·안양예술공원·삼막사 방향 인접권",
+      "hasPage": true
+    },
+    {
+      "name": "안양역",
+      "slug": "anyang-station",
+      "desc": "안양동·안양일번가·석수동 인접 이동권",
+      "hasPage": true
+    }
   ],
   "stationNote": "석수역과 관악역은 석수동 생활권에 가까운 1호선 인접 역이며, 안양역은 차량 이동 기준의 인접 이동권입니다. 서울 금천 방향은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하세요.",
   "adjacentIntro": "석수동은 만안구 안에서 안양동, 박달동, 호현동과 가까운 북부 생활권입니다. 석수역·관악역 이용이 편한 역세권이지만 서울 금천구와 경계를 맞대고 있어, 금천 방향 이동은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" },
-      { "name": "박달동", "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/" },
-      { "name": "충훈동", "path": null },
-      { "name": "호현동", "path": null }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      },
+      {
+        "name": "박달동",
+        "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/"
+      },
+      {
+        "name": "충훈동",
+        "path": null
+      },
+      {
+        "name": "호현동",
+        "path": null
+      }
     ],
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "서울 금천 인접 생활권", "path": null }
+      {
+        "name": "서울 금천 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

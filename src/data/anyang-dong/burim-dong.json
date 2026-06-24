@@ -17,35 +17,95 @@
     "body": "부림동은 같은 동 안에서도 동안구청 쪽인지, 평촌 학원가에 붙은 단지인지, 단지 안쪽 깊숙한 동인지에 따라 도착 동선과 소요 시간이 달라집니다. 신도시 특유의 바둑판 도로라 주소는 단순하지만 단지가 넓어, 예약 전에는 정확한 단지명과 동호수, 그리고 범계역·평촌역 중 어느 출구로 진입하는지를 함께 정리해 두는 것이 좋습니다. 평촌 학원가가 가까워 등하원 시간대에는 주변 도로가 붐비므로, 동안구청·학원가 같은 랜드마크를 기준으로 위치를 안내하고 혼잡 시간대 도착 여유를 미리 확인해 두면 한결 수월합니다."
   },
   "subAreas": [
-    { "name": "부림동 단지권", "desc": "바둑판 도로 사이 아파트 단지가 모인 부림동의 대표 생활권입니다." },
-    { "name": "동안구청 일대", "desc": "행정 시설과 주변 도로를 기준으로 위치를 잡기 좋은 지점입니다." },
-    { "name": "평촌 학원가 인접권", "desc": "등하원 시간대 혼잡을 함께 확인하는 활기 있는 인접 상권입니다." },
-    { "name": "범계역 방향권", "desc": "범계역 출구 기준 진입 동선을 확인하기 좋은 이동권입니다." },
-    { "name": "평촌동 인접권", "desc": "부림동과 함께 확인하기 좋은 평촌 신도시 인접 생활권입니다." },
-    { "name": "갈산동 인접권", "desc": "동안구청·평촌 방향으로 이어지는 인접 생활권입니다." },
-    { "name": "호계동 인접권", "desc": "부림동과 가까운 인접 생활권으로 별도 지역으로 다룹니다." }
+    {
+      "name": "부림동 단지권",
+      "desc": "바둑판 도로 사이 아파트 단지가 모인 부림동의 대표 생활권입니다."
+    },
+    {
+      "name": "동안구청 일대",
+      "desc": "행정 시설과 주변 도로를 기준으로 위치를 잡기 좋은 지점입니다."
+    },
+    {
+      "name": "평촌 학원가 인접권",
+      "desc": "등하원 시간대 혼잡을 함께 확인하는 활기 있는 인접 상권입니다."
+    },
+    {
+      "name": "범계역 방향권",
+      "desc": "범계역 출구 기준 진입 동선을 확인하기 좋은 이동권입니다."
+    },
+    {
+      "name": "평촌동 인접권",
+      "desc": "부림동과 함께 확인하기 좋은 평촌 신도시 인접 생활권입니다."
+    },
+    {
+      "name": "갈산동 인접권",
+      "desc": "동안구청·평촌 방향으로 이어지는 인접 생활권입니다."
+    },
+    {
+      "name": "호계동 인접권",
+      "desc": "부림동과 가까운 인접 생활권으로 별도 지역으로 다룹니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "범계역", "slug": "beomgye-station", "desc": "범계 로데오·평촌·부림동 인접 이동권", "hasPage": true },
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌동·부림동·학원가 방향 이동 기준", "hasPage": true },
-    { "name": "인덕원역", "slug": "indeogwon-station", "desc": "관양동·부림동·과천 방향 인접권", "hasPage": false }
+    {
+      "name": "범계역",
+      "slug": "beomgye-station",
+      "desc": "범계 로데오·평촌·부림동 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌동·부림동·학원가 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "인덕원역",
+      "slug": "indeogwon-station",
+      "desc": "관양동·부림동·과천 방향 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "부림동은 범계역과 평촌역을 두루 낀 생활권으로, 두 역 모두 도보·차량 진입이 가능한 인접 역입니다. 인덕원역 방향은 인접 이동권 정도로 참고하세요.",
   "adjacentIntro": "부림동은 동안구 안에서 평촌동, 갈산동, 호계동과 가까운 신도시 중심 생활권입니다. 범계역·평촌역 이용이 함께 가능하므로 인접 단지와 묶어 확인하고, 만안구 방향 이동은 별도 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "호계동", "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/" },
-      { "name": "갈산동", "path": "/gyeonggi/anyang/dongan-gu/galsan-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "호계동",
+        "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/"
+      },
+      {
+        "name": "갈산동",
+        "path": "/gyeonggi/anyang/dongan-gu/galsan-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "과천·인덕원 인접 생활권", "path": null }
+      {
+        "name": "과천·인덕원 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

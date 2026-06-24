@@ -1,14 +1,16 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PriceTable from "../../../components/PriceTable.astro";
 import { SITE } from "../../../lib/site";
 import { getSido, sigungusBySido, stations } from "../../../lib/data";
-import { breadcrumbSchema } from "../../../lib/seo";
+import { breadcrumbSchema, coursePriceSchema } from "../../../lib/seo";
 
 const title = "안양 출장마사지｜범계·평촌·인덕원·안양역 홈타이 지역 안내";
 const description = "안양 출장마사지·홈타이 예약 전 범계, 평촌, 인덕원, 안양역, 석수동, 호계동 생활권을 확인하세요.";
 
 const schema = [
   breadcrumbSchema([{ name: "홈", path: "/" }, { name: "안양 안내", path: "/gyeonggi/anyang/" }]),
+  coursePriceSchema("안양", "/gyeonggi/anyang/"),
 ];
 
 const anyang = getSido("anyang")!;
@@ -128,4 +130,7 @@ const anyangStations = stations.filter((s) => s.sigunguSlug === "anyang").slice(
       </div>
     </div>
   </section>
+
+  <!-- 코스 요금 -->
+  <PriceTable areaLabel="안양" />
 </BaseLayout>

@@ -1,0 +1,62 @@
+[
+  {
+    "stationName": "명학역",
+    "stationSlug": "myeonghak-station",
+    "stationGroup": "gyeonggi",
+    "sido": "경기",
+    "sigungu": "안양시",
+    "sigunguSlug": "anyang",
+    "nearbyAreas": ["안양동", "박달동", "충훈동"],
+    "transferYn": false,
+    "transferLines": ["1호선"],
+    "address": "경기 안양시 만안구 명학로 일대",
+    "contentFocus": "안양역과 가까운 1호선 역으로 안양동·박달동·충훈동 원도심 생활권을 잇는 인접 이동 기준 역입니다.",
+    "indexPriority": 1,
+    "contentStatus": "ready"
+  },
+  {
+    "stationName": "석수역",
+    "stationSlug": "seoksu-station",
+    "stationGroup": "gyeonggi",
+    "sido": "경기",
+    "sigungu": "안양시",
+    "sigunguSlug": "anyang",
+    "nearbyAreas": ["석수동", "박달동", "호현동"],
+    "transferYn": false,
+    "transferLines": ["1호선"],
+    "address": "경기 안양시 만안구 석수동 일대",
+    "contentFocus": "서울 금천구와 경계를 맞댄 1호선 역으로 석수동·박달동·호현동 만안구 서북부 생활권의 인접 이동 기준 역입니다.",
+    "indexPriority": 1,
+    "contentStatus": "ready"
+  },
+  {
+    "stationName": "관악역",
+    "stationSlug": "gwanak-station",
+    "stationGroup": "gyeonggi",
+    "sido": "경기",
+    "sigungu": "안양시",
+    "sigunguSlug": "anyang",
+    "nearbyAreas": ["석수동", "안양예술공원", "박달동"],
+    "transferYn": false,
+    "transferLines": ["1호선"],
+    "address": "경기 안양시 만안구 경수대로 일대",
+    "contentFocus": "관악산 자락과 안양예술공원 방면을 낀 1호선 역으로 석수동·박달동 생활권을 잇는 인접 이동 기준 역입니다.",
+    "indexPriority": 1,
+    "contentStatus": "ready"
+  },
+  {
+    "stationName": "인덕원역",
+    "stationSlug": "indeogwon-station",
+    "stationGroup": "gyeonggi",
+    "sido": "경기",
+    "sigungu": "안양시",
+    "sigunguSlug": "anyang",
+    "nearbyAreas": ["관양동", "평촌동", "부림동"],
+    "transferYn": false,
+    "transferLines": ["4호선"],
+    "address": "경기 안양시 동안구 관양동 일대",
+    "contentFocus": "동안구 북부 교통 거점인 4호선 역으로 관양동·평촌동·부림동 신도시 생활권을 잇는 인접 이동 기준 역입니다.",
+    "indexPriority": 1,
+    "contentStatus": "ready"
+  }
+]

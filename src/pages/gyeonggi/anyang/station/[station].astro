@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PriceTable from "../../../../components/PriceTable.astro";
 import { stations } from "../../../../lib/data";
-import { breadcrumbSchema, webPageSchema } from "../../../../lib/seo";
+import { breadcrumbSchema, webPageSchema, coursePriceSchema } from "../../../../lib/seo";
 
 export async function getStaticPaths() {
   const anyangStations = stations.filter((s) => s.sigunguSlug === "anyang");
@@ -27,6 +28,7 @@ const schema = [
     { name: stationData.stationName, path: `/gyeonggi/anyang/station/${station}/` },
   ]),
   webPageSchema(title, description, `/gyeonggi/anyang/station/${station}/`),
+  coursePriceSchema(`안양 ${stationData.stationName}`, `/gyeonggi/anyang/station/${station}/`),
 ];
 ---
 
@@ -84,4 +86,7 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- 코스 요금 -->
+  <PriceTable areaLabel={stationData.stationName} />
 </BaseLayout>

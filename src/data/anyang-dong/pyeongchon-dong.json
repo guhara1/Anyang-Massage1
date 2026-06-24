@@ -17,35 +17,95 @@
     "body": "평촌동은 대단지 아파트가 밀집한 지역이라 같은 단지라도 동과 호수에 따라 공동현관과 진입 동선이 달라집니다. 예약 전에는 정확한 단지명과 동호수, 공동현관 비밀번호 안내 가능 여부를 먼저 정리해 두는 것이 도착을 빠르게 합니다. 평촌 학원가 일대는 등하원 시간대인 오후부터 밤 사이 도로와 주차장이 크게 혼잡해지므로, 이 시간대를 피하거나 여유 있게 잡으면 도착 지연을 줄일 수 있습니다. 대단지는 방문차량 등록이 필요한 곳이 많으니 차량 출입 절차와 방문자 주차 가능 여부도 함께 확인하시기 바랍니다. 평촌역·범계역은 위치를 가늠하는 기준으로만 쓰고, 실제 안내는 단지명과 중앙공원 같은 지점을 중심으로 하면 헷갈리지 않습니다."
   },
   "subAreas": [
-    { "name": "평촌 학원가", "desc": "등하원 시간대 혼잡 확인이 필요한 평촌동의 대표 교육 상권입니다." },
-    { "name": "평촌중앙공원 인접권", "desc": "녹지 축을 따라 대단지가 이어지는 평촌동 중심 주거권입니다." },
-    { "name": "평촌역 상권", "desc": "평촌역을 낀 생활 상권과 인접 단지가 맞닿은 생활권입니다." },
-    { "name": "대단지 아파트권", "desc": "단지명·동호수 기준 위치 확인이 중요한 정돈된 주거 단지입니다." },
-    { "name": "범계동 인접권", "desc": "범계역 상권과 함께 확인하기 좋은 동안구 인접 생활권입니다." },
-    { "name": "관양동 인접권", "desc": "인덕원 방향 이동 기준을 함께 확인하는 인접 생활권입니다." },
-    { "name": "비산동 인접권", "desc": "평촌동과 가까운 동안구 인접 생활권으로 별도 지역으로 다룹니다." }
+    {
+      "name": "평촌 학원가",
+      "desc": "등하원 시간대 혼잡 확인이 필요한 평촌동의 대표 교육 상권입니다."
+    },
+    {
+      "name": "평촌중앙공원 인접권",
+      "desc": "녹지 축을 따라 대단지가 이어지는 평촌동 중심 주거권입니다."
+    },
+    {
+      "name": "평촌역 상권",
+      "desc": "평촌역을 낀 생활 상권과 인접 단지가 맞닿은 생활권입니다."
+    },
+    {
+      "name": "대단지 아파트권",
+      "desc": "단지명·동호수 기준 위치 확인이 중요한 정돈된 주거 단지입니다."
+    },
+    {
+      "name": "범계동 인접권",
+      "desc": "범계역 상권과 함께 확인하기 좋은 동안구 인접 생활권입니다."
+    },
+    {
+      "name": "관양동 인접권",
+      "desc": "인덕원 방향 이동 기준을 함께 확인하는 인접 생활권입니다."
+    },
+    {
+      "name": "비산동 인접권",
+      "desc": "평촌동과 가까운 동안구 인접 생활권으로 별도 지역으로 다룹니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "평촌역", "slug": "pyeongchon-station", "desc": "평촌동·평촌 학원가·중앙공원 인접 이동권", "hasPage": true },
-    { "name": "범계역", "slug": "beomgye-station", "desc": "범계동·평촌동·범계 상권 방향 이동 기준", "hasPage": true },
-    { "name": "인덕원역", "slug": "indeogwon-station", "desc": "관양동·평촌동·인덕원 방향 인접권", "hasPage": false }
+    {
+      "name": "평촌역",
+      "slug": "pyeongchon-station",
+      "desc": "평촌동·평촌 학원가·중앙공원 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "범계역",
+      "slug": "beomgye-station",
+      "desc": "범계동·평촌동·범계 상권 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "인덕원역",
+      "slug": "indeogwon-station",
+      "desc": "관양동·평촌동·인덕원 방향 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "평촌동은 평촌역·범계역을 낀 역세권 생활권이지만, 학원가 등하원 시간대에는 역 주변 도로 혼잡이 심한 편입니다. 인덕원역 방향은 관양동과 함께 인접 이동권 정도로 참고하세요.",
   "adjacentIntro": "평촌동은 동안구 안에서 범계동, 관양동, 비산동과 가까운 평촌 신도시 중심 생활권입니다. 평촌역·범계역 이용이 필요한 경우 범계동 상권과 함께 확인하고, 만안구 방향은 별도 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "관양동", "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/" },
-      { "name": "비산동", "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/" },
-      { "name": "호계동", "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "관양동",
+        "path": "/gyeonggi/anyang/dongan-gu/gwanyang-dong/"
+      },
+      {
+        "name": "비산동",
+        "path": "/gyeonggi/anyang/dongan-gu/bisan-dong/"
+      },
+      {
+        "name": "호계동",
+        "path": "/gyeonggi/anyang/dongan-gu/hogye-dong/"
+      }
     ],
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "인덕원 인접 생활권", "path": null }
+      {
+        "name": "인덕원 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

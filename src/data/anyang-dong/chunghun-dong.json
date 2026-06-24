@@ -17,36 +17,99 @@
     "body": "충훈동은 같은 동 안에서도 충훈고 인근 주거지인지, 안양천에 가까운 단지인지, 박달동·안양동 경계에 붙은 쪽인지에 따라 도착 동선과 소요 시간이 달라집니다. 동 안에 지하철역이 직접 있는 것이 아니라 안양역을 비롯한 인접 역을 차량으로 이용하는 지역이므로, 가까운 역을 출발지로 설명하기보다 박달·안양 도심 인접 기준으로 위치를 잡는 편이 정확합니다. 예약 전에는 정확한 도로명 주소와 건물 위치, 안양천을 낀 진입 경로, 외곽 이동에 따른 추가 이동비 발생 여부를 함께 확인해 두는 것이 좋습니다."
   },
   "subAreas": [
-    { "name": "충훈고 인접권", "desc": "학교와 주거지가 맞물린 충훈동의 대표 생활권입니다." },
-    { "name": "충훈부 일대", "desc": "옛 지명을 기준으로 위치를 잡기 좋은 충훈동 중심 지점입니다." },
-    { "name": "안양천 인접권", "desc": "박달동과 안양동 도심 사이 차량 이동을 잇는 보조 생활권입니다." },
-    { "name": "박달동 인접권", "desc": "충훈동과 함께 확인하기 좋은 만안구 서쪽 인접 생활권입니다." },
-    { "name": "안양동 인접권", "desc": "안양역·안양일번가 방향 이동 기준을 함께 보는 생활권입니다." },
-    { "name": "석수동 인접권", "desc": "석수역·관악역 방향 이동 기준을 함께 확인하는 생활권입니다." },
-    { "name": "호현동 인접권", "desc": "충훈동과 가까운 인접 생활권으로 별도 지역으로 다룹니다." }
+    {
+      "name": "충훈고 인접권",
+      "desc": "학교와 주거지가 맞물린 충훈동의 대표 생활권입니다."
+    },
+    {
+      "name": "충훈부 일대",
+      "desc": "옛 지명을 기준으로 위치를 잡기 좋은 충훈동 중심 지점입니다."
+    },
+    {
+      "name": "안양천 인접권",
+      "desc": "박달동과 안양동 도심 사이 차량 이동을 잇는 보조 생활권입니다."
+    },
+    {
+      "name": "박달동 인접권",
+      "desc": "충훈동과 함께 확인하기 좋은 만안구 서쪽 인접 생활권입니다."
+    },
+    {
+      "name": "안양동 인접권",
+      "desc": "안양역·안양일번가 방향 이동 기준을 함께 보는 생활권입니다."
+    },
+    {
+      "name": "석수동 인접권",
+      "desc": "석수역·관악역 방향 이동 기준을 함께 확인하는 생활권입니다."
+    },
+    {
+      "name": "호현동 인접권",
+      "desc": "충훈동과 가까운 인접 생활권으로 별도 지역으로 다룹니다."
+    }
   ],
   "nearbyStations": [
-    { "name": "안양역", "slug": "anyang-station", "desc": "안양동·안양일번가·충훈동 인접 이동권", "hasPage": true },
-    { "name": "명학역", "slug": "myeonghak-station", "desc": "안양동·충훈동·호계 방향 이동 기준", "hasPage": false },
-    { "name": "석수역", "slug": "seoksu-station", "desc": "석수동·충훈동·서울 금천 인접권", "hasPage": false }
+    {
+      "name": "안양역",
+      "slug": "anyang-station",
+      "desc": "안양동·안양일번가·충훈동 인접 이동권",
+      "hasPage": true
+    },
+    {
+      "name": "명학역",
+      "slug": "myeonghak-station",
+      "desc": "안양동·충훈동·호계 방향 이동 기준",
+      "hasPage": true
+    },
+    {
+      "name": "석수역",
+      "slug": "seoksu-station",
+      "desc": "석수동·충훈동·서울 금천 인접권",
+      "hasPage": true
+    }
   ],
   "stationNote": "충훈동 안에 지하철역이 직접 있는 것은 아니며, 위 역들은 모두 차량 이동 기준의 인접 역입니다. 안양역이 가장 가까운 이용 기준 역이고, 명학역·석수역은 방향에 따라 인접 이동권 정도로만 참고하세요. 광명역·금정역 방향은 별도 이동권으로 봅니다.",
   "adjacentIntro": "충훈동은 만안구 안에서 박달동, 안양동, 석수동, 호현동과 가까운 서쪽 길목 생활권입니다. 안양역 이용이 필요한 경우 안양동 생활권과 함께 확인하고, 광명 방향 이동은 별도 도시 생활권이므로 인접 이동권 정도로만 참고하시면 됩니다.",
   "adjacent": {
     "만안구 생활권": [
-      { "name": "만안구 전체", "path": "/gyeonggi/anyang/gu/manan-gu/" },
-      { "name": "박달동", "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/" },
-      { "name": "안양동", "path": "/gyeonggi/anyang/manan-gu/anyang-dong/" },
-      { "name": "석수동", "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/" },
-      { "name": "호현동", "path": null }
+      {
+        "name": "만안구 전체",
+        "path": "/gyeonggi/anyang/gu/manan-gu/"
+      },
+      {
+        "name": "박달동",
+        "path": "/gyeonggi/anyang/manan-gu/bakdal-dong/"
+      },
+      {
+        "name": "안양동",
+        "path": "/gyeonggi/anyang/manan-gu/anyang-dong/"
+      },
+      {
+        "name": "석수동",
+        "path": "/gyeonggi/anyang/manan-gu/seoksu-dong/"
+      },
+      {
+        "name": "호현동",
+        "path": null
+      }
     ],
     "동안구 생활권": [
-      { "name": "동안구 전체", "path": "/gyeonggi/anyang/gu/dongan-gu/" },
-      { "name": "범계동", "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/" },
-      { "name": "평촌동", "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/" }
+      {
+        "name": "동안구 전체",
+        "path": "/gyeonggi/anyang/gu/dongan-gu/"
+      },
+      {
+        "name": "범계동",
+        "path": "/gyeonggi/anyang/dongan-gu/beomgye-dong/"
+      },
+      {
+        "name": "평촌동",
+        "path": "/gyeonggi/anyang/dongan-gu/pyeongchon-dong/"
+      }
     ],
     "인접 이동권": [
-      { "name": "광명 인접 생활권", "path": null }
+      {
+        "name": "광명 인접 생활권",
+        "path": null
+      }
     ]
   },
   "faq": [

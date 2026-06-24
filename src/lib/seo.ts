@@ -1,4 +1,5 @@
 import { SITE } from "./site";
+import pricing from "../data/pricing.json";
 
 /** 80자 이내로 메타 디스크립션을 자른다 (단어 잘림 최소화) */
 export function clampDescription(text: string, max = 80): string {
@@ -97,6 +98,27 @@ export function serviceAreaSchema(areaName: string, path: string) {
     provider: { "@id": absoluteUrl("/#organization") },
     areaServed: { "@type": "Place", name: areaName },
     url: absoluteUrl(path),
+  };
+}
+
+/** 코스 요금(Offer) 포함 Service 스키마 — 가격표가 있는 페이지용 */
+export function coursePriceSchema(areaName: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "출장마사지·홈타이 방문 관리 안내",
+    provider: { "@id": absoluteUrl("/#organization") },
+    areaServed: { "@type": "Place", name: areaName },
+    url: absoluteUrl(path),
+    offers: pricing.courses.map((c) => ({
+      "@type": "Offer",
+      name: c.name,
+      price: String(c.price).replace(/[^0-9]/g, ""),
+      priceCurrency: "KRW",
+      description: c.desc,
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(path),
+    })),
   };
 }
 
