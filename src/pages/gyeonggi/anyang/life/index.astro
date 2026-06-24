@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PriceTable from "../../../../components/PriceTable.astro";
 import { getSido } from "../../../../lib/data";
-import { breadcrumbSchema } from "../../../../lib/seo";
+import { breadcrumbSchema, coursePriceSchema } from "../../../../lib/seo";
 
-const title = "생활권 안내｜안양";
+const title = "생활권 안내｜안양 출장마사지·홈타이 지역별 예약";
 const description = "안양 출장마사지·홈타이 생활권 안내. 범계, 평촌, 인덕원, 안양역 등 주요 생활권을 확인하세요.";
 
 const schema = [
@@ -13,9 +14,25 @@ const schema = [
     { name: "안양", path: "/gyeonggi/anyang/" },
     { name: "생활권 안내", path: "/gyeonggi/anyang/life/" },
   ]),
+  coursePriceSchema("안양 생활권", "/gyeonggi/anyang/life/"),
 ];
 
 const anyang = getSido("anyang")!;
+
+// 생활권 → 대표 동 매핑
+const lifeAreaMap: Record<string, { gu: string; dong: string; desc: string }> = {
+  "안양역·안양일번가 생활권": { gu: "manan-gu", dong: "anyang-dong", desc: "안양의 원도심 중심 상권" },
+  "명학·안양동 생활권": { gu: "manan-gu", dong: "anyang-dong", desc: "원도심 일번가 생활권" },
+  "석수·관악역 생활권": { gu: "manan-gu", dong: "seoksu-dong", desc: "만안구 서부 거점 생활권" },
+  "박달·충훈 생활권": { gu: "manan-gu", dong: "bakdal-dong", desc: "차량 이동 중심 생활권" },
+  "비산·종합운동장 생활권": { gu: "dongan-gu", dong: "bisan-dong", desc: "체육시설 인접 생활권" },
+  "범계·호계 생활권": { gu: "dongan-gu", dong: "beomgye-dong", desc: "신도시 북부 번화가" },
+  "평촌역·학원가 생활권": { gu: "dongan-gu", dong: "pyeongchon-dong", desc: "신도시 중심 생활권" },
+  "인덕원·관양 생활권": { gu: "dongan-gu", dong: "gwanyang-dong", desc: "신도시 교통 거점" },
+  "평촌신도시 생활권": { gu: "dongan-gu", dong: "pyeongchon-dong", desc: "신도시 주거지역" },
+  "호계·금정 인접 생활권": { gu: "dongan-gu", dong: "hogye-dong", desc: "신도시 인접권" },
+  "관양·과천 인접 생활권": { gu: "dongan-gu", dong: "gwanyang-dong", desc: "광역 연계 생활권" },
+};
 ---
 
 <BaseLayout title={title} description={description} path="/gyeonggi/anyang/life/" schema={schema}>
@@ -37,22 +54,46 @@ const anyang = getSido("anyang")!;
 
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
         {
-          anyang.lifeAreas.map((area, idx) => (
-            <div style="padding:24px;border:1px solid #e0e0e0;border-radius:8px;background:#fff;transition:all 0.2s">
-              <div style="font-weight:bold;font-size:1.1rem;margin-bottom:12px">{area}</div>
-              <p style="font-size:0.9rem;color:#666;margin:0">
-                안양의 주요 생활권입니다. 지역 특성과 위치 정보를 참고하여 예약하세요.
-              </p>
-            </div>
-          ))
+          anyang.lifeAreas.map((area, idx) => {
+            const info = lifeAreaMap[area];
+            return (
+              <a
+                href={`/gyeonggi/anyang/${info.gu}/${info.dong}/`}
+                style="padding:24px;border:1px solid #e0e0e0;border-radius:8px;background:#fff;transition:all 0.2s;text-decoration:none;cursor:pointer;display:flex;flex-direction:column;gap:8px"
+              >
+                <div style="font-weight:bold;font-size:1.1rem;color:#0a1730">{area}</div>
+                <p style="font-size:0.9rem;color:#666;margin:0">
+                  {info.desc}
+                </p>
+                <div style="font-size:0.85rem;color:#1f6feb;font-weight:600;margin-top:auto">
+                  상세보기 →
+                </div>
+              </a>
+            )
+          })
         }
       </div>
 
-      <div class="prose" style="margin-top:48px;text-align:center;padding:32px;background:#f5f5f5;border-radius:8px">
-        <h2>생활권별 상세 정보</h2>
+    </div>
+  </section>
+
+  <!-- 코스 요금 -->
+  <PriceTable areaLabel="안양 생활권" />
+
+  <!-- 생활권별 상세 정보 -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">생활권별 상세 정보</span>
+        <h2 class="section__title">각 생활권의 자세한 내용</h2>
+      </div>
+      <div class="prose" style="text-align:center;line-height:1.8">
         <p>
           위의 생활권들은 지하철역과 상권, 주거 특성을 바탕으로 구분된 안양의 주요 생활권입니다.
-          각 생활권의 구체적인 지역 정보는 <a href="/gyeonggi/anyang/dong/">지역별 안내</a> 페이지에서 확인할 수 있습니다.
+          각 생활권을 클릭하면 대표 생활권의 자세한 지역 정보를 확인할 수 있습니다.
+        </p>
+        <p>
+          더 다양한 지역 정보는 <a href="/gyeonggi/anyang/dong/">지역별 상세 안내</a> 페이지와 <a href="/gyeonggi/anyang/station/">역세권 안내</a> 페이지에서 확인하세요.
         </p>
       </div>
     </div>
