@@ -9,9 +9,9 @@ export async function getStaticPaths() {
   const paths: any[] = [];
 
   for (const district of districts) {
-    const dongs = dongsOf("anyang", district.regionSlug);
+    const dongs = dongsOf("gyeonggi", district.regionSlug);
     for (const dong of dongs) {
-      const detail = dongDetailFor("anyang", district.regionSlug, dong.slug);
+      const detail = dongDetailFor("gyeonggi", district.regionSlug, dong.slug);
       if (detail) {
         paths.push({
           params: { dong: dong.slug },
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 const { dong } = Astro.params;
 const { district, dongSlug, dongName } = Astro.props;
 
-const detail = dongDetailFor("anyang", district.regionSlug, dongSlug!);
+const detail = dongDetailFor("gyeonggi", district.regionSlug, dongSlug!);
 if (!detail) return Astro.redirect("/gyeonggi/anyang/dong/");
 
 const title = `${detail.name || dongName}｜안양`;
