@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { getSido } from "../../../../lib/data";
+import { breadcrumbSchema } from "../../../../lib/seo";
+
+const title = "생활권 안내｜안양";
+const description = "안양 출장마사지·홈타이 생활권 안내. 범계, 평촌, 인덕원, 안양역 등 주요 생활권을 확인하세요.";
+
+const schema = [
+  breadcrumbSchema([
+    { name: "홈", path: "/" },
+    { name: "안양", path: "/gyeonggi/anyang/" },
+    { name: "생활권 안내", path: "/gyeonggi/anyang/life/" },
+  ]),
+];
+
+const anyang = getSido("anyang")!;
+---
+
+<BaseLayout title={title} description={description} path="/gyeonggi/anyang/life/" schema={schema}>
+  <Breadcrumbs items={[
+    { name: "홈", path: "/" },
+    { name: "안양", path: "/gyeonggi/anyang/" },
+    { name: "생활권 안내" },
+  ]} />
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">생활권 안내</span>
+        <h1 class="section__title">안양 주요 생활권</h1>
+        <p class="section__lead">
+          안양의 모든 생활권을 확인하세요. 각 생활권은 지하철역과 상권, 문화시설을 중심으로 구분됩니다.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+        {
+          anyang.lifeAreas.map((area, idx) => (
+            <div style="padding:24px;border:1px solid #e0e0e0;border-radius:8px;background:#fff;transition:all 0.2s">
+              <div style="font-weight:bold;font-size:1.1rem;margin-bottom:12px">{area}</div>
+              <p style="font-size:0.9rem;color:#666;margin:0">
+                안양의 주요 생활권입니다. 지역 특성과 위치 정보를 참고하여 예약하세요.
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="prose" style="margin-top:48px;text-align:center;padding:32px;background:#f5f5f5;border-radius:8px">
+        <h2>생활권별 상세 정보</h2>
+        <p>
+          위의 생활권들은 지하철역과 상권, 주거 특성을 바탕으로 구분된 안양의 주요 생활권입니다.
+          각 생활권의 구체적인 지역 정보는 <a href="/gyeonggi/anyang/dong/">지역별 안내</a> 페이지에서 확인할 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

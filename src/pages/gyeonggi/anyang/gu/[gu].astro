@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { sigungusBySido, getSigungu, dongsOf } from "../../../../lib/data";
+import { breadcrumbSchema } from "../../../../lib/seo";
+
+export async function getStaticPaths() {
+  const districts = sigungusBySido("anyang");
+  return districts.map((d) => ({
+    params: { gu: d.regionSlug },
+  }));
+}
+
+const { gu } = Astro.params;
+const district = getSigungu("anyang", gu!);
+
+if (!district) return Astro.redirect("/gyeonggi/anyang/gu/");
+
+const title = `${district.regionName} 안내｜안양`;
+const description = district.contentFocus;
+
+const schema = [
+  breadcrumbSchema([
+    { name: "홈", path: "/" },
+    { name: "안양", path: "/gyeonggi/anyang/" },
+    { name: "구별 안내", path: "/gyeonggi/anyang/gu/" },
+    { name: district.regionName, path: `/gyeonggi/anyang/gu/${gu}/` },
+  ]),
+];
+
+const dongs = dongsOf("anyang", gu!);
+---
+
+<BaseLayout title={title} description={description} path={`/gyeonggi/anyang/gu/${gu}/`} schema={schema}>
+  <Breadcrumbs items={[
+    { name: "홈", path: "/" },
+    { name: "안양", path: "/gyeonggi/anyang/" },
+    { name: "구별 안내", path: "/gyeonggi/anyang/gu/" },
+    { name: district.regionName },
+  ]} />
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">구 안내</span>
+        <h1 class="section__title">{district.regionName}</h1>
+        <p class="section__lead">{district.contentFocus}</p>
+      </div>
+
+      <div style="margin-bottom:48px">
+        <h2 style="margin-bottom:16px">주요 지하철역</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {district.nearbyStations?.map((station) => (
+            <span style="padding:8px 16px;background:#0a1730;color:#fff;border-radius:4px">{station}</span>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 style="margin-bottom:16px">주요 동</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
+          {dongs.map((d) => (
+            <a href={`/gyeonggi/anyang/dong/${d.slug}/`} style="padding:20px;border:1px solid #e0e0e0;border-radius:8px;text-decoration:none;transition:all 0.2s">
+              <div style="font-weight:bold;margin-bottom:8px">{d.name}</div>
+              <p style="font-size:0.9rem;color:#666;margin:0">{d.blurb}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

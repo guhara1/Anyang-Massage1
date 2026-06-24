@@ -5,18 +5,19 @@ import { SITE } from "../lib/site";
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="/" class="brand" aria-label={SITE.name + " 홈"}>
-      <span class="brand__mark">VIP</span>
+      <span class="brand__mark">GO</span>
       <span>{SITE.name}</span>
     </a>
 
     <nav class="nav" aria-label="주요 메뉴">
-      <a href="/area/seoul/">서울</a>
-      <a href="/area/gyeonggi/">경기</a>
-      <a href="/area/incheon/">인천</a>
-      <a href="/area/busan/">부산</a>
-      <a href="/station/">지하철역</a>
-      <a href="/program/">프로그램</a>
+      <a href="/gyeonggi/anyang/">안양 홈</a>
+      <a href="/gyeonggi/anyang/gu/">구별 안내</a>
+      <a href="/gyeonggi/anyang/dong/">지역별 안내</a>
+      <a href="/gyeonggi/anyang/station/">역세권 안내</a>
+      <a href="/gyeonggi/anyang/life/">생활권 안내</a>
       <a href="/reservation/">예약 안내</a>
+      <a href="/guide/">이용 가이드</a>
+      <a href="/contact/">고객센터</a>
     </nav>
 
     <a class="header-call" href={SITE.phoneHref}>

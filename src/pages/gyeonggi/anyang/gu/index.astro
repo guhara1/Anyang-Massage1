@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { sigungusBySido } from "../../../../lib/data";
+import { breadcrumbSchema } from "../../../../lib/seo";
+
+const title = "구별 안내｜안양 만안구·동안구";
+const description = "안양 출장마사지·홈타이 지역 안내. 만안구와 동안구의 생활권과 특징을 확인하세요.";
+
+const schema = [
+  breadcrumbSchema([
+    { name: "홈", path: "/" },
+    { name: "안양", path: "/gyeonggi/anyang/" },
+    { name: "구별 안내", path: "/gyeonggi/anyang/gu/" },
+  ]),
+];
+
+const districts = sigungusBySido("anyang");
+---
+
+<BaseLayout title={title} description={description} path="/gyeonggi/anyang/gu/" schema={schema}>
+  <Breadcrumbs items={[{ name: "홈", path: "/" }, { name: "안양", path: "/gyeonggi/anyang/" }, { name: "구별 안내" }]} />
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">구별 안내</span>
+        <h1 class="section__title">안양 만안구·동안구</h1>
+        <p class="section__lead">
+          안양시는 만안구와 동안구로 나뉩니다. 각 구의 특징과 생활권을 확인하세요.
+        </p>
+      </div>
+
+      {
+        districts.map((d) => (
+          <div style="margin-bottom:48px">
+            <div style="display:flex;gap:16px;align-items:baseline;margin-bottom:16px">
+              <a href={`/gyeonggi/anyang/gu/${d.regionSlug}/`} style="font-size:1.5rem;font-weight:bold">{d.regionName}</a>
+            </div>
+            <p style="font-size:1rem;margin-bottom:16px">{d.contentFocus}</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px">
+              {d.nearbyStations?.map((station) => (
+                <span style="padding:8px 12px;background:#f5f5f5;border-radius:4px">{station}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

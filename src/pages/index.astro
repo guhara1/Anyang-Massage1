@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PriceTable from "../components/PriceTable.astro";
 import ProgramLinks from "../components/ProgramLinks.astro";
 import { SITE } from "../lib/site";
-import { sidos, services, prioritySigungus, stationsByGroup } from "../lib/data";
+import { sidos, services, prioritySigungus, stationsByGroup, stations } from "../lib/data";
 import { breadcrumbSchema, faqSchema } from "../lib/seo";
 
 const title =
@@ -55,8 +55,8 @@ const lifeAreas = sidos.flatMap((s) =>
       </ul>
       <div class="hero__cta">
         <a class="btn btn--cta" href={SITE.phoneHref}>전화예약 {SITE.phone}</a>
-        <a class="btn btn--line" href="/area/anyang/">지역별 안내 보기</a>
-        <a class="btn btn--line" href="/station/anyang/">역으로 찾기</a>
+        <a class="btn btn--line" href="/gyeonggi/anyang/">지역별 안내 보기</a>
+        <a class="btn btn--line" href="/gyeonggi/anyang/station/">역으로 찾기</a>
       </div>
       <div class="hero__stats">
         <div><b>2</b><span>만안구·동안구</span></div>
@@ -77,7 +77,7 @@ const lifeAreas = sidos.flatMap((s) =>
         </p>
       </div>
       <div class="grid grid--2">
-        <a class="card" href="/area/anyang/manan-gu/">
+        <a class="card" href="/gyeonggi/anyang/manan-gu/">
           <div class="card__title">
             만안구 <span class="arrow">→</span>
           </div>
@@ -90,7 +90,7 @@ const lifeAreas = sidos.flatMap((s) =>
             <span class="tag">석수역</span>
           </div>
         </a>
-        <a class="card" href="/area/anyang/dongan-gu/">
+        <a class="card" href="/gyeonggi/anyang/dongan-gu/">
           <div class="card__title">
             동안구 <span class="arrow">→</span>
           </div>
@@ -119,22 +119,19 @@ const lifeAreas = sidos.flatMap((s) =>
       </div>
       <div class="grid grid--3">
         {
-          (() => {
-            const sts = stationsByGroup('anyang').slice(0, 9);
-            return sts.map((st) => (
-              <a class="card" href={`/station/${st.stationGroup}/${st.stationSlug}/`}>
-                <div class="card__title">{st.stationName}</div>
-                <p class="card__desc">
-                  {st.nearbyAreas?.slice(0, 2).join(', ')} 인접 생활권
-                </p>
-                <div class="card__tags">
-                  {st.nearbyAreas?.slice(0, 2).map((area) => (
-                    <span class="tag">{area}</span>
-                  ))}
-                </div>
-              </a>
-            ));
-          })()
+          stations.filter((s) => s.sigunguSlug === "anyang").slice(0, 9).map((st) => (
+            <a class="card" href={`/gyeonggi/anyang/station/${st.stationSlug}/`}>
+              <div class="card__title">{st.stationName}</div>
+              <p class="card__desc">
+                {st.nearbyAreas?.slice(0, 2).join(', ')} 인접 생활권
+              </p>
+              <div class="card__tags">
+                {st.nearbyAreas?.slice(0, 2).map((area) => (
+                  <span class="tag">{area}</span>
+                ))}
+              </div>
+            </a>
+          ))
         }
       </div>
     </div>
@@ -198,11 +195,11 @@ const lifeAreas = sidos.flatMap((s) =>
       <p>
         서울, 경기, 인천, 부산 출장마사지를 찾는 분들은 보통 현재 있는 지역명이나
         가까운 지하철역을 기준으로 검색합니다. 어떤 분은 <a href="/area/seoul/">강남</a>처럼
-        지역명으로 찾고, 어떤 분은 <a href="/station/seoul/gangnam-station/">강남역</a>처럼
-        역 이름으로 찾습니다. 경기에서는 <a href="/station/gyeonggi/suwon-station/">수원역</a>,
-        <a href="/station/gyeonggi/pangyo-station/">판교역</a>, 정자역처럼 도시와 역이 함께
-        검색되고, 인천은 <a href="/station/incheon/bupyeong-station/">부평역</a>, 송도, 청라
-        생활권이 중요합니다. 부산은 <a href="/station/busan/seomyeon-station/">서면역</a>,
+        지역명으로 찾고, 어떤 분은 <a href="/gyeonggi/anyang/station/seoul/gangnam-station/">강남역</a>처럼
+        역 이름으로 찾습니다. 경기에서는 <a href="/gyeonggi/anyang/station/gyeonggi/suwon-station/">수원역</a>,
+        <a href="/gyeonggi/anyang/station/gyeonggi/pangyo-station/">판교역</a>, 정자역처럼 도시와 역이 함께
+        검색되고, 인천은 <a href="/gyeonggi/anyang/station/incheon/bupyeong-station/">부평역</a>, 송도, 청라
+        생활권이 중요합니다. 부산은 <a href="/gyeonggi/anyang/station/busan/seomyeon-station/">서면역</a>,
         해운대, 센텀시티처럼 도시철도 기반 검색 의도가 강합니다.
       </p>
 
@@ -220,7 +217,7 @@ const lifeAreas = sidos.flatMap((s) =>
         서울은 25개 구 단위 안내를 먼저 제공하고, 강남·역삼, 잠실·송파,
         홍대·합정, 여의도·영등포, 신림·관악 같은 핵심 역세권을 함께 연결합니다.
         자세한 내용은 <a href="/area/seoul/">서울 지역 안내</a>와
-        <a href="/station/seoul/">서울 지하철역 안내</a>에서 확인하세요.
+        <a href="/gyeonggi/anyang/station/seoul/">서울 지하철역 안내</a>에서 확인하세요.
       </p>
       <div class="chip-list">
         {
