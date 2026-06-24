@@ -43,6 +43,15 @@ export interface Station {
   contentFocus: string;
   indexPriority: number;
   contentStatus: string;
+  seoTitle?: string;
+  metaDescription?: string;
+  h1?: string;
+  heroSub?: string;
+  overview?: string[];
+  subAreas?: { name: string; desc: string }[];
+  nearbyDongs?: { name: string; slug: string; gu?: string; desc: string }[];
+  stationNote?: string;
+  faq?: { q: string; a: string }[];
 }
 
 export interface Service {

@@ -2,8 +2,9 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import PriceTable from "../../../../components/PriceTable.astro";
+import { SITE } from "../../../../lib/site";
 import { stations } from "../../../../lib/data";
-import { breadcrumbSchema, webPageSchema, coursePriceSchema } from "../../../../lib/seo";
+import { breadcrumbSchema, webPageSchema, coursePriceSchema, faqSchema } from "../../../../lib/seo";
 
 export async function getStaticPaths() {
   const anyangStations = stations.filter((s) => s.sigunguSlug === "anyang");
@@ -17,22 +18,35 @@ const stationData = stations.find((s) => s.stationSlug === station && s.sigunguS
 
 if (!stationData) return Astro.redirect("/gyeonggi/anyang/station/");
 
-const title = `${stationData.stationName}｜안양`;
-const description = stationData.contentFocus;
+const path = `/gyeonggi/anyang/station/${station}/`;
+const title = stationData.seoTitle || `${stationData.stationName}｜안양`;
+const description = stationData.metaDescription || stationData.contentFocus;
 
 const schema = [
   breadcrumbSchema([
     { name: "홈", path: "/" },
     { name: "안양", path: "/gyeonggi/anyang/" },
     { name: "역세권 안내", path: "/gyeonggi/anyang/station/" },
-    { name: stationData.stationName, path: `/gyeonggi/anyang/station/${station}/` },
+    { name: stationData.stationName, path },
   ]),
-  webPageSchema(title, description, `/gyeonggi/anyang/station/${station}/`),
-  coursePriceSchema(`안양 ${stationData.stationName}`, `/gyeonggi/anyang/station/${station}/`),
+  webPageSchema(title, description, path),
+  coursePriceSchema(`안양 ${stationData.stationName}`, path),
+  ...(stationData.faq ? [faqSchema(stationData.faq)] : []),
+];
+
+const reservationChecklist = [
+  "역명·출구 확인",
+  "방문 가능 주소 확인",
+  "예약 가능 시간 확인",
+  "추가 이동비 발생 여부 확인",
+  "건물 출입 방식 확인",
+  "자택·숙소·오피스텔 이용 기준 확인",
+  "결제 방식 확인",
+  "예약 변경 기준 확인",
 ];
 ---
 
-<BaseLayout title={title} description={description} path={`/gyeonggi/anyang/station/${station}/`} schema={schema}>
+<BaseLayout title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs items={[
     { name: "홈", path: "/" },
     { name: "안양", path: "/gyeonggi/anyang/" },
@@ -40,53 +54,178 @@ const schema = [
     { name: stationData.stationName },
   ]} />
 
-  <section class="section" style="padding-top:8px">
-    <div class="container">
-      <div class="section__head">
-        <span class="eyebrow">역세권 안내</span>
-        <h1 class="section__title">{stationData.stationName}</h1>
-        <p class="section__lead">{stationData.contentFocus}</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <span class="hero__badge"><span class="dot"></span> 역세권 안내</span>
+      <h1>{stationData.h1 || stationData.stationName}</h1>
+      <p class="hero__sub">{stationData.heroSub || stationData.contentFocus}</p>
+      <div class="hero__cta">
+        <a class="btn btn--cta" href={SITE.phoneHref}>전화예약 {SITE.phone}</a>
+        <a class="btn btn--line" href="#sub-areas">지역 세부 안내 보기</a>
+        <a class="btn btn--line" href="#nearby-dongs">인접 동 확인</a>
+        <a class="btn btn--line" href="#reservation">예약 안내 보기</a>
       </div>
+    </div>
+  </section>
 
-      {stationData.transferYn && (
-        <div style="margin-bottom:32px;padding:16px;background:#f0f7ff;border-radius:8px">
-          <span style="font-weight:bold;color:#0a1730">환승역 정보</span>
-          <p style="margin:8px 0 0 0;font-size:0.95rem">{stationData.transferLines?.join(", ")} 환승 가능</p>
+  <!-- 지역 개요 -->
+  {stationData.overview && stationData.overview.length > 0 && (
+    <section class="section" style="padding-top:32px">
+      <div class="container">
+        <div class="prose" style="line-height:1.85">
+          {stationData.overview.map((para) => <p>{para}</p>)}
         </div>
-      )}
+      </div>
+    </section>
+  )}
 
-      <div style="margin-bottom:32px">
-        <h2 style="margin-bottom:16px">인접 생활권</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
-          {stationData.nearbyAreas?.map((area) => (
-            <div style="padding:12px;background:#f5f5f5;border-radius:6px">
-              <div style="font-weight:bold">{area}</div>
+  <!-- 환승역 정보 -->
+  {stationData.transferYn && (
+    <section class="section section--soft">
+      <div class="container">
+        <div style="padding:24px;background:#f0f7ff;border-radius:8px;border-left:4px solid #1f6feb">
+          <h2 style="margin:0 0 12px 0;font-size:1.15rem">환승역 정보</h2>
+          <p style="margin:0;font-size:1rem">{stationData.transferLines?.join(", ")} 환승 가능</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 세부 생활권 -->
+  {stationData.subAreas && stationData.subAreas.length > 0 && (
+    <section class="section" id="sub-areas">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">지역 세부 안내</span>
+          <h2 class="section__title">{stationData.stationName} 세부 생활권 안내</h2>
+        </div>
+        <div class="grid grid--3">
+          {stationData.subAreas.map((area) => (
+            <div class="card">
+              <div class="card__title">{area.name}</div>
+              <p class="card__desc">{area.desc}</p>
             </div>
           ))}
         </div>
       </div>
+    </section>
+  )}
 
-      <div style="margin-bottom:32px">
-        <h2 style="margin-bottom:16px">주소</h2>
-        <p>{stationData.address}</p>
+  <!-- 인접 동 -->
+  {stationData.nearbyDongs && stationData.nearbyDongs.length > 0 && (
+    <section class="section section--soft" id="nearby-dongs">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">인접 지역</span>
+          <h2 class="section__title">{stationData.stationName}과 함께 확인할 인접 동</h2>
+        </div>
+        <div class="grid grid--3">
+          {stationData.nearbyDongs.map((dong) => (
+            <a href={`/gyeonggi/anyang/${dong.gu || 'manan-gu'}/${dong.slug}/`} class="card">
+              <div class="card__title">{dong.name}</div>
+              <p class="card__desc">{dong.desc}</p>
+            </a>
+          ))}
+        </div>
       </div>
+    </section>
+  )}
 
-      <div class="prose">
-        <h2>방문 전 확인사항</h2>
-        <p>
-          {stationData.stationName} 역세권에서 출장마사지·홈타이를 이용하실 경우,
-          위의 인접 생활권과 주소 정보를 참고하여 정확한 위치를 미리 확인해 주세요.
-          예약 시 역명과 출구, 가까운 건물이나 상가 이름을 함께 알려주시면
-          도착이 더욱 수월합니다.
-        </p>
-        <p>
-          특히 환승역이나 대규모 역세권은 시간대에 따라 혼잡도가 크게 달라질 수 있으므로,
-          예약 전 전화로 정확한 도착 가능 시간을 문의해 주시기 바랍니다.
-        </p>
+  <!-- 주소 및 역 정보 -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        <div>
+          <h2 style="margin-bottom:16px;font-size:1.15rem">역 주소</h2>
+          <p style="color:#44506a;line-height:1.6">{stationData.address}</p>
+        </div>
+        <div>
+          <h2 style="margin-bottom:16px;font-size:1.15rem">역세권 정보</h2>
+          <p style="color:#44506a;line-height:1.6">{stationData.stationNote}</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 코스 요금 -->
   <PriceTable areaLabel={stationData.stationName} />
+
+  <!-- 예약 전 확인사항 -->
+  <section class="section section--soft" id="reservation">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">예약 안내</span>
+        <h2 class="section__title">{stationData.stationName} 홈타이 예약 전 확인사항</h2>
+      </div>
+      <ul class="check-list">
+        {reservationChecklist.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {stationData.faq && stationData.faq.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">자주 묻는 질문</span>
+          <h2 class="section__title">{stationData.stationName} 출장마사지 자주 묻는 질문</h2>
+        </div>
+        <div class="faq">
+          {stationData.faq.map((f) => (
+            <details class="faq__item">
+              <summary class="faq__q">{f.q}</summary>
+              <p class="faq__a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
+
+<style>
+  .btn--sm { padding: 6px 14px; font-size: 0.85rem; margin-top: 10px; }
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .check-list li {
+    position: relative;
+    padding: 12px 14px 12px 38px;
+    background: #fff;
+    border: 1px solid #e6e9ef;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 14px;
+    color: #1f6feb;
+    font-weight: 700;
+  }
+  .faq__item {
+    border: 1px solid #e6e9ef;
+    border-radius: 8px;
+    padding: 4px 18px;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  .faq__q {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 14px 0;
+    color: #0a1730;
+  }
+  .faq__a {
+    margin: 0 0 14px;
+    line-height: 1.8;
+    color: #44506a;
+  }
+</style>
