@@ -32,39 +32,19 @@ export function breadcrumbSchema(crumbs: Crumb[]) {
   };
 }
 
-/** 사이트 전역 LocalBusiness 스키마 (상호/전화/서비스 지역) */
-export function localBusinessSchema() {
+/** 사이트 전역 Organization 스키마 (방문형 서비스용 LocalBusiness 대체) */
+export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
-    "@id": absoluteUrl("/#business"),
+    "@type": "Organization",
+    "@id": absoluteUrl("/#organization"),
     name: SITE.name,
     alternateName: SITE.brandEn,
     url: SITE.url,
     image: absoluteUrl(SITE.ogImage),
     telephone: SITE.phone,
-    priceRange: "₩₩",
     description: clampDescription(SITE.tagline),
-    areaServed: [
-      { "@type": "City", name: "서울특별시" },
-      { "@type": "AdministrativeArea", name: "경기도" },
-      { "@type": "City", name: "인천광역시" },
-      { "@type": "City", name: "부산광역시" },
-    ],
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "10:00",
-      closes: "05:00",
-    },
+    areaServed: { "@type": "City", name: "안양시" },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SITE.phone,
@@ -85,7 +65,8 @@ export function websiteSchema() {
     name: SITE.name,
     description: clampDescription(SITE.tagline),
     inLanguage: "ko-KR",
-    publisher: { "@id": absoluteUrl("/#business") },
+    publisher: { "@id": absoluteUrl("/#organization") },
+    areaServed: { "@type": "City", name: "안양시" },
   };
 }
 
@@ -113,8 +94,43 @@ export function serviceAreaSchema(areaName: string, path: string) {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "출장마사지·홈타이 방문 관리 안내",
-    provider: { "@id": absoluteUrl("/#business") },
+    provider: { "@id": absoluteUrl("/#organization") },
     areaServed: { "@type": "Place", name: areaName },
     url: absoluteUrl(path),
+  };
+}
+
+/** 이미지 객체 스키마 (OG 이미지용) */
+export function imageObjectSchema(
+  imageUrl: string,
+  width = 1200,
+  height = 630
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    url: imageUrl,
+    width: width,
+    height: height,
+  };
+}
+
+/** 웹페이지 스키마 (상세 페이지용) */
+export function webPageSchema(
+  title: string,
+  description: string,
+  path: string,
+  imageUrl?: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: absoluteUrl(path),
+    name: title,
+    description: clampDescription(description),
+    inLanguage: "ko-KR",
+    datePublished: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": absoluteUrl("/#website") },
+    ...(imageUrl && { image: imageObjectSchema(imageUrl) }),
   };
 }

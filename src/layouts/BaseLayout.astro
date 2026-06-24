@@ -7,7 +7,7 @@ import { SITE } from "../lib/site";
 import {
   clampDescription,
   absoluteUrl,
-  localBusinessSchema,
+  organizationSchema,
   websiteSchema,
 } from "../lib/seo";
 
@@ -37,8 +37,8 @@ const fullTitle =
   title === SITE.name ? title : `${title}｜${SITE.name}`;
 const ogImageUrl = absoluteUrl(ogImage);
 
-// 전역 스키마(LocalBusiness + WebSite) + 페이지별 스키마
-const graph = [localBusinessSchema(), websiteSchema(), ...schema];
+// 전역 스키마(Organization + WebSite) + 페이지별 스키마
+const graph = [organizationSchema(), websiteSchema(), ...schema];
 ---
 
 <!doctype html>
